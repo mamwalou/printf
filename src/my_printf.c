@@ -1,13 +1,12 @@
-
 #include "../inc/my_printf.h"
 #include <stdio.h>
+#define FORMAT 14
 
-int			define_var(int format)
+/*int			define_var(const char *format)
 {
 	int tab[FORMAT];
-	int cnt;
+	int i;
 
-	cnt = 0;
 	tab[0] = 's';
 	tab[1] = 'S';
 	tab[2] = 'c';
@@ -20,40 +19,68 @@ int			define_var(int format)
 	tab[9] = 'U';
 	tab[10] = 'x';
 	tab[11] = 'X';
-	tab[12] = 'p';
-	tab[13] = 'd';
-	while (cnt < FORMAT)
+	tab[12] = 'd';
+	tab[13] = 'f';
+	i = 0;
+	while (tab[i])
 	{
-		if (format == tab[cnt])
-			return(cnt);
-		cnt++;
+		if (format == tab[i])
+			return(i);
+		i++;
 	}
-	return (cnt);
-}
-int			my_printf(const char *format, ...)
+	return (FORMAT);
+}*/
 
+void		init_parm(t_params *params)
 {
-	va_list		ap;
-	int			*tab;
-	int			pos;
+	params->zero = NO;
+	params->width = NO;
+	params->space = 0;
+}
+int			to_convert(t_args *args, const char *str, t_params *params)
+{
+	int i;
 
+	i = 0;
+	init_parm(params);
+	if (str[i] == '%')
+		i += 1;
+	while ((flags(str, i, params)) > 1)
+		i += 1;
+	while ((init_width(str, i, params)) > 1)
+		i += 1;
+	if (str[i] == '.')
+		params->precision = get_precision(str, i);
+	ft_putchar(str[i]);
+	exit (1);
+}
+
+int			my_printf(const char *format, ...)
+{
+	int		i;
+	int		pos;
+	t_args	args;
+	t_params params;
+
+	i = 0;
 	pos = 0;
-	va_start(ap, format);
-	tab = ft_memalloc((size_t)FORMAT - 1);
-	while (*format)
+	va_start(args.ap, format);
+	while (format[i])
 	{
-		if ((*format++) == '%')
-			if ((pos = define_var(*format)) < FORMAT)
-			low_convert(ap, pos);
-		ft_putchar(*format);
+		va_start(args.tmp_ap, format);
+		if (format[i] == '%' && to_convert(&args, format + i, &params))
+			;
+		i++;
+		va_end(args.tmp_ap);
 	}
-	va_end(ap);
+	va_end(args.ap);
 	return(0);
 }
 
 int			main()
 {
 
-	my_printf("%uqwdqwd%c %s", 42, 'c', "test");
+	//my_printf("%*d", 10);
+	printf("%+.*s\n", "test");
 	return (0);
 }

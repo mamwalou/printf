@@ -2,7 +2,8 @@ NAME = my_printf
 SRC_NAME = my_printf.c \
 			printf_gest.c \
 			low_convert.c \
-			gest_error.c
+			gest_error.c \
+			flags.c
 
 INC_PATH = ./inc/
 SRC_PATH = ./src/
