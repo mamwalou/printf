@@ -34,8 +34,10 @@
 void		init_parm(t_params *params)
 {
 	params->zero = NO;
-	params->width = NO;
+	params->width = 0;
 	params->space = 0;
+	params->precision = 0;
+	params->lenght = 0;
 }
 int			to_convert(t_args *args, const char *str, t_params *params)
 {
@@ -45,14 +47,18 @@ int			to_convert(t_args *args, const char *str, t_params *params)
 	init_parm(params);
 	if (str[i] == '%')
 		i += 1;
-	while ((flags(str, i, params)) > 1)
+	while ((flags(str, i, params)) > 0)
 		i += 1;
-	while ((init_width(str, i, params)) > 1)
+	while ((init_width(str, i, params)) > 0)
 		i += 1;
 	if (str[i] == '.')
-		params->precision = get_precision(str, i);
-	ft_putchar(str[i]);
-	exit (1);
+	{
+		i += 1;
+		while ((get_precision(str, i, params)) > 0)
+			i += 1;
+	}
+	if (str[i])
+		params->lenght = lenght_gest(str);
 }
 
 int			my_printf(const char *format, ...)
@@ -79,8 +85,6 @@ int			my_printf(const char *format, ...)
 
 int			main()
 {
-
-	//my_printf("%*d", 10);
-	printf("%+.*s\n", "test");
+	my_printf("%42.1092");
 	return (0);
 }
