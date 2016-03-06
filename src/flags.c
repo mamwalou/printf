@@ -1,4 +1,34 @@
 #include "../inc/my_printf.h"
+#define FORMAT 14
+
+int			specifier(char format)
+{
+	int tab[FORMAT];
+	int i;
+
+	tab[0] = 's';
+	tab[1] = 'S';
+	tab[2] = 'c';
+	tab[3] = 'C';
+	tab[4] = 'D';
+	tab[5] = 'i';
+	tab[6] = 'o';
+	tab[7] = 'O';
+	tab[8] = 'u';
+	tab[9] = 'U';
+	tab[10] = 'x';
+	tab[11] = 'X';
+	tab[12] = 'd';
+	tab[13] = 'f';
+	i = 0;
+	while (tab[i])
+	{
+		if (format == tab[i])
+			return(i);
+		i++;
+	}
+	return (FORMAT);
+}
 
 int			flags(const char *str, int pos, t_params *params)
 {
@@ -46,21 +76,21 @@ int			get_precision(const char *str, int pos, t_params *params)
 	return (0);
 }
 
-int 		lenght_gest(const char *str, t_params *params)
+int 		lenght_gest(const char *str)
 {
 	char	*tab[LENGHT];
 	int		i;
 
-	tab[0] = "hh";
+	tab[0] = "t";
 	tab[1] = "h";
 	tab[2] = "l";
-	tab[3] = "ll";
+	tab[3] = "L";
 	tab[4] = "j";
 	tab[5] = "z";
-	tab[6] = "t";
-	tab[7] = "L";
+	tab[6] = "hh";
+	tab[7] = "ll";
 	i = 0;
-	while (ft_strcmp(tab[i], str) != 0)
-			i++;
+	while (i < LENGHT && ft_strcmp(tab[i], str))
+		i++;
 	return (i);
 }
