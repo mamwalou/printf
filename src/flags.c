@@ -1,5 +1,5 @@
 #include "../inc/my_printf.h"
-#define FORMAT 14
+
 
 int			specifier(char format)
 {
@@ -10,7 +10,7 @@ int			specifier(char format)
 	tab[1] = 'S';
 	tab[2] = 'c';
 	tab[3] = 'C';
-	tab[4] = 'D';
+	tab[4] = 'd';
 	tab[5] = 'i';
 	tab[6] = 'o';
 	tab[7] = 'O';
@@ -21,13 +21,13 @@ int			specifier(char format)
 	tab[12] = 'd';
 	tab[13] = 'f';
 	i = 0;
-	while (tab[i])
+	while (i < FORMAT)
 	{
 		if (format == tab[i])
 			return(i);
 		i++;
 	}
-	return (FORMAT);
+	return (i);
 }
 
 int			flags(const char *str, int pos, t_params *params)
@@ -90,7 +90,11 @@ int 		lenght_gest(const char *str)
 	tab[6] = "hh";
 	tab[7] = "ll";
 	i = 0;
-	while (i < LENGHT && ft_strcmp(tab[i], str))
+	while (i <= LENGHT)
+	{
+		if (!ft_strcmp(tab[i], str))
+			return (i);
 		i++;
+	}
 	return (i);
 }
