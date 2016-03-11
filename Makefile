@@ -1,9 +1,12 @@
 NAME = my_printf
 SRC_NAME = my_printf.c \
-			printf_gest.c \
-			low_convert.c \
 			gest_error.c \
-			flags.c
+			flags.c \
+			convert.c \
+			variable_check.c \
+			variable_check1.c \
+			variable_def.c \
+			ft_printf.c
 
 INC_PATH = ./inc/
 SRC_PATH = ./src/
