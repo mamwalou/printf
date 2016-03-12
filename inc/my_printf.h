@@ -4,18 +4,12 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdarg.h>
+# include <stddef.h>
+# include <inttypes.h>
 # include "../libft/Includes/libft.h"
 
-# define HH 1
-# define H 2
-# define LL 3
-# define L 4
-# define J 5
-# define Z 6
-# define T 7
-
-# define YES 1
-# define NO 0
+#define FORMAT 14
+#define LENGHT 8
 
 typedef struct			s_args
 {
@@ -25,29 +19,45 @@ typedef struct			s_args
 
 typedef struct			s_params
 {
-	int					space;
-	int					zero;
 	int					width;
 	int					precision;
+	int					flags;
+	int					lenght;
+	int					specifier;
+	void 				*var;
 }						t_params;
 
-typedef struct			s_var
+typedef struct			s_tab
 {
-	unsigned char		unchar;
-	unsigned int		unint;
-	signed int			sigint;
-	signed char			sigchar;
-	short int			shortint;
-	long int			longint;
-	unsigned long int	unlongint;
-	unsigned short int	unshorint;
-}						t_var;
+	int					i;
+	int 				(*f)(t_params *);
+}						t_tab;
 
+					/*PRINT*/
 void 	printf_gest(va_list ap, int pos);
-int     low_convert(va_list ap, int pos);
 void	gest_error(va_list ap, int pos);
+void    ft_printf(t_params params, t_args *args);
 
+					/*PARSING */
 int 	flags(const char *str, int pos, t_params *params);
 int		init_width(const char *str, int pos, t_params *params);
 int		get_precision(const char *str, int pos, t_params *params);
+int 	lenght_gest(const char *str);
+int		specifier(char format);
+
+					/*VARIABLE*/
+void     *varibale_define(t_params *params);
+int     len_t(t_params *params);
+int     len_h(t_params *params);
+int     len_l(t_params *params);
+int     len_L(t_params *params);
+int	    len_z(t_params *params);
+int     len_j(t_params *params);
+int     len_hh(t_params *params);
+int     len_ll(t_params *params);
+
+
+					/*CONVERT*/
+void    convert_octal(unsigned int nb);
+void    convert_hexlow(unsigned int nb);
 #endif

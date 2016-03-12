@@ -1,6 +1,6 @@
 #include "../inc/my_printf.h"
 
-static void     print_integer_simply(t_params *params, t_args *args, t_var *v)
+/*static void     print_integer_simply(t_params *params, t_args *args)
 {
     if (params->specifier == 4 || params->specifier == 5)
     {
@@ -22,22 +22,20 @@ static void     print_integer_simply(t_params *params, t_args *args, t_var *v)
         v->unint = va_arg(args->ap, unsigned int);
         //convert_hexlow(v->unint);
     }
-}
+}*/
 
 static int     print_integer(t_params *params, t_args *args)
 {
-    t_var var;
-
     if (params->specifier >= 4 && params->specifier <= 13)
     {
         if (!params->lenght)
-            print_integer_simply(params, args, &var);
+    /*        print_integer_simply(params, args);*/;
     }
 
 }
 void    ft_printf(t_params params, t_args *args)
 {
-    varibale_define(&params, &var);
+    varibale_define(&params);
     //print_integer(&params, args);
     /*print_floating(&params, args, format);
     print_string(&params, args, format);*/

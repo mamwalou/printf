@@ -12,13 +12,14 @@ static t_tab    tab[LENGHT]=
     {7, len_ll},
 };
 
-void        *varibale_define(t_params *params, t_var *var)
+void        *varibale_define(t_params *params)
 {
     int     i;
 
-    i = -1;
-    while (tab[++i].i <= LENGHT)
+    i = 0;
+    while (i < LENGHT)
     {
-        ;
+        if (tab[i].f(params) < 1)
+            return ;
     }
 }

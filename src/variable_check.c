@@ -1,26 +1,38 @@
 #include "../inc/my_printf.h"
 
-void        len_t(t_params *params)
+int        len_t(t_params *params)
 {
-    return ;
+    if (params->lenght == 0)
+    {
+        ptrdiff_t ptrdif;
+
+        ptrdif = 0;
+        params->var = &ptrdif;
+        return (1);
+    }
+    return (0);
 }
 
-void        len_h(t_params *params)
+int        len_h(t_params *params)
 {
-    return ;
+    return (0);
 }
 
-void        len_l(t_params *params)
+int        len_l(t_params *params)
 {
-    return ;
+    return (0);
 }
 
-void        len_L(t_params *params)
+int        len_L(t_params *params)
 {
-    return ;
+    return (0);
 }
 
-void        len_z(t_params *params)
+int        len_z(t_params *params)
 {
-    return ;
+    size_t sizet;
+
+    sizet = 0;
+    params->var = &sizet;
+    return (0);
 }
