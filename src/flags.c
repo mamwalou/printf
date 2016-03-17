@@ -75,26 +75,3 @@ int			get_precision(const char *str, int pos, t_params *params)
 	}
 	return (0);
 }
-
-int 		lenght_gest(const char *str)
-{
-	char	*tab[LENGHT];
-	int		i;
-
-	tab[0] = "t";
-	tab[1] = "h";
-	tab[2] = "l";
-	tab[3] = "L";
-	tab[4] = "j";
-	tab[5] = "z";
-	tab[6] = "hh";
-	tab[7] = "ll";
-	i = 0;
-	while (i <= LENGHT)
-	{
-		if (!ft_strcmp(tab[i], str))
-			return (i);
-		i++;
-	}
-	return (i);
-}

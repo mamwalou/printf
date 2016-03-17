@@ -6,6 +6,7 @@ SRC_NAME = my_printf.c \
 			variable_check.c \
 			variable_check1.c \
 			variable_def.c \
+			lenght.c \
 			ft_printf.c
 
 INC_PATH = ./inc/

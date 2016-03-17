@@ -7,9 +7,11 @@
 # include <stddef.h>
 # include <inttypes.h>
 # include "../libft/Includes/libft.h"
+# include <stdio.h>
 
-#define FORMAT 14
-#define LENGHT 8
+# define FORMAT 14
+# define LENGHT 8
+
 
 typedef struct			s_args
 {
@@ -30,7 +32,7 @@ typedef struct			s_params
 typedef struct			s_tab
 {
 	int					i;
-	int 				(*f)(t_params *);
+	int 				(*f)(t_params *, t_args *);
 }						t_tab;
 
 					/*PRINT*/
@@ -46,15 +48,15 @@ int 	lenght_gest(const char *str);
 int		specifier(char format);
 
 					/*VARIABLE*/
-void     *varibale_define(t_params *params);
-int     len_t(t_params *params);
-int     len_h(t_params *params);
-int     len_l(t_params *params);
-int     len_L(t_params *params);
-int	    len_z(t_params *params);
-int     len_j(t_params *params);
-int     len_hh(t_params *params);
-int     len_ll(t_params *params);
+void   varibale_define(t_params *params, t_args *args);
+int    len_t(t_params *params, t_args *args);
+int    len_h(t_params *params, t_args *args);
+int    len_l(t_params *params, t_args *args);
+int    len_L(t_params *params, t_args *args);
+int	   len_z(t_params *params, t_args *args);
+int    len_j(t_params *params, t_args *args);
+int	   len_hh(t_params *params, t_args *args);
+int    len_ll(t_params *params, t_args *args);
 
 
 					/*CONVERT*/

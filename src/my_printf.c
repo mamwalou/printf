@@ -1,5 +1,5 @@
 #include "../inc/my_printf.h"
-#include <stdio.h>
+
 
 static void		init_parm(t_params *params)
 {
@@ -9,29 +9,39 @@ static void		init_parm(t_params *params)
 	params->specifier = 0;
 }
 
-int			to_convert(t_args *args, const char *str, t_params *params)
+int			to_convert(const char *str, int pos, t_params *params)
 {
-	int i;
-
-	i = 0;
-	if (str[i] == '%')
-		i += 1;
-	if (str[i] == '%')
-		return (0);
-	while ((flags(str, i, params)) > 0)
-		i += 1;
-	while ((init_width(str, i, params)) > 0)
-		i += 1;
-	if (str[i] == '.')
+	ft_putstr(str + pos);
+	ft_putnbr(pos);
+	ft_putstr("<---->");
+	if (str[pos] != '%')
 	{
-		i += 1;
-		while ((get_precision(str, i, params)) > 0)
-			i += 1;
+		ft_putchar(str[pos]);
+		exit (1);
+		return (pos);
 	}
-	if ((params->lenght = lenght_gest(str) < 8))
-		i += 1;
-	params->specifier = specifier(str[i]);
-	return (1);
+	pos += 1;
+	if (str[pos] == '%')
+		return (pos);
+	while ((flags(str, pos, params)) > 0)
+		pos += 1;
+	while ((init_width(str, pos, params)) > 0)
+		pos += 1;
+	if (str[pos] == '.')
+	{
+		pos += 1;
+		while ((get_precision(str, pos, params)) > 0)
+			pos += 1;
+	}
+	params->lenght = lenght_gest(str + pos);
+	if (params->lenght < 6)
+		pos += 1;
+	if (params->lenght == 6 || params->lenght == 7)
+		pos += 2;
+	params->specifier = specifier(str[pos]);
+	ft_putnbr(pos);
+	ft_putchar('\n');
+	return (pos + 1);
 }
 
 int			my_printf(const char *format, ...)
@@ -40,6 +50,7 @@ int			my_printf(const char *format, ...)
 	int		pos;
 	t_args	args;
 	t_params params;
+	int tmp = 0;
 
 	i = 0;
 	pos = 0;
@@ -47,16 +58,13 @@ int			my_printf(const char *format, ...)
 	init_parm(&params);
 	while (format[i])
 	{
-		va_start(args.tmp_ap, format);
-		if (format[i] == '%' && to_convert(&args, format + i, &params) == 1)
+		tmp = i;
+		ft_putnbr(tmp);
+		if ((i = to_convert(format, i, &params)) > tmp)
 		{
-			ft_printf(params, &args);
-			i += 1;
+			//ft_printf(params, &args);
+			;
 		}
-		else
-			ft_putchar(format[i]);
-		i++;
-		va_end(args.tmp_ap);
 	}
 	va_end(args.ap);
 	return(0);
@@ -64,6 +72,7 @@ int			my_printf(const char *format, ...)
 
 int			main()
 {
-	my_printf("%o\n", 774333);
+	my_printf("%hd test\n", 32768);
+	//printf("%hd\n", 32768);
 	return (0);
 }
