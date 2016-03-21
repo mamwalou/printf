@@ -11,15 +11,8 @@ static void		init_parm(t_params *params)
 
 int			to_convert(const char *str, int pos, t_params *params)
 {
-	ft_putstr(str + pos);
-	ft_putnbr(pos);
-	ft_putstr("<---->");
 	if (str[pos] != '%')
-	{
-		ft_putchar(str[pos]);
-		exit (1);
 		return (pos);
-	}
 	pos += 1;
 	if (str[pos] == '%')
 		return (pos);
@@ -39,8 +32,6 @@ int			to_convert(const char *str, int pos, t_params *params)
 	if (params->lenght == 6 || params->lenght == 7)
 		pos += 2;
 	params->specifier = specifier(str[pos]);
-	ft_putnbr(pos);
-	ft_putchar('\n');
 	return (pos + 1);
 }
 
@@ -59,11 +50,12 @@ int			my_printf(const char *format, ...)
 	while (format[i])
 	{
 		tmp = i;
-		ft_putnbr(tmp);
-		if ((i = to_convert(format, i, &params)) > tmp)
+		if ((format[i] == '%') && (i = to_convert(format, i, &params)) > tmp)
+			ft_printf(params, &args);
+		else
 		{
-			//ft_printf(params, &args);
-			;
+			ft_putchar(format[i]);
+			i++;
 		}
 	}
 	va_end(args.ap);
@@ -72,7 +64,7 @@ int			my_printf(const char *format, ...)
 
 int			main()
 {
-	my_printf("%hd test\n", 32768);
-	//printf("%hd\n", 32768);
+	my_printf("%d test\n", 32768);
+	//printf("%d\n", 32768);
 	return (0);
 }
