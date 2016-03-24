@@ -21,6 +21,8 @@ int     specifier_spint(t_params *params, t_args *args)
         uni = (unsigned)va_arg(args->ap, int);
         if (params->specifier == 6)
             convert_octal(uni);
+        else if (params->specifier == 10)
+            convert_hexlow(uni);
         else
             display(&uni, params);
     }
