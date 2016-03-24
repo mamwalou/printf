@@ -1,19 +1,23 @@
-NAME = my_printf
+NAME = libftprintf
+
+NAMEA = libftprintf.a
+
 SRC_NAME = my_printf.c \
-			gest_error.c \
 			flags.c \
 			convert.c \
 			variable_check.c \
 			variable_check1.c \
 			variable_def.c \
 			lenght.c \
-			ft_printf.c
+			display.c
 
-INC_PATH = ./inc/
-SRC_PATH = ./src/
+INC_PATH = ./includes/
+SRC_PATH = ./srcs/
 OBJ_PATH = ./obj/
 LIB_PATH = ./libft/
 LIB_NAME = libft.a
+LIBTOOL = libtool
+ARRC = ar rc
 CC = gcc
 CFLAGS = -Werror -Wall -Wextra
 OBJ_NAME = $(SRC_NAME:.c=.o)
@@ -22,10 +26,13 @@ OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
 LIB = $(addprefix $(LIB_PATH),$(LIB_NAME))
 INC = $(addprefix -I,$(INC_PATH))
 
-all:$(NAME)
+all:$(NAMEA)
 
-$(NAME): $(OBJ) libf
-	$(CC) $(CFLAGS) $(OBJ) $(LIB) $(INC) -o $@
+$(NAMEA): $(OBJ) libf
+	$(ARRC) $(NAME) $(OBJ)
+	$(LIBTOOL) -static -o $(NAMEA) libft/libft.a $(NAME)
+	@rm $(NAME)
+	@ranlib $(NAMEA)
 
 $(OBJ_PATH)%.o:$(SRC_PATH)%.c
 	@mkdir -p $(OBJ_PATH)
@@ -40,7 +47,7 @@ clean:
 	rm -rf $(OBJ_PATH)
 
 fclean: clean
-	rm -rf $(NAME)
+	rm -rf $(NAMEA)
 
 re: fclean all
 
