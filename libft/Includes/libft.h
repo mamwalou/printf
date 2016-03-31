@@ -19,8 +19,8 @@
 # include <time.h>
 # define BUF_SIZE 1496
 
-
-
+void				ft_putstr_rev(char *s);
+int					ft_strnb(void *var);
 int					ft_strcmp_size(off_t s1, off_t s2, int reverse);
 int					ft_strcmp_date(time_t t1, time_t t2, int reverse);
 int					ft_strcmp_name(char *s1, char *s2);
