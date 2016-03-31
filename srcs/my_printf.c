@@ -38,13 +38,11 @@ int			to_convert(const char *str, int pos, t_params *params)
 int			my_printf(const char *format, ...)
 {
 	int		i;
-	int		pos;
 	t_args	args;
 	t_params params;
 	int tmp = 0;
 
 	i = 0;
-	pos = 0;
 	va_start(args.ap, format);
 	init_parm(&params);
 	while (format[i])
@@ -59,4 +57,16 @@ int			my_printf(const char *format, ...)
 	}
 	va_end(args.ap);
 	return(i);
+}
+
+int main()
+{
+	int test;
+
+	int *ptr;
+	test = 42;
+	ptr = &test;
+	printf("%p\n", ptr);
+	my_printf("%p\n", ptr);
+	return (0);
 }

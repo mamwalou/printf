@@ -10,7 +10,7 @@
 # include "../libft/Includes/libft.h"
 # include <stdio.h>
 
-# define SPECIFIER 13
+# define SPECIFIER 14
 # define LENGHT 8
 
 
@@ -43,6 +43,8 @@ void 	printf_gest(va_list ap, int pos);
 void	gest_error(va_list ap, int pos);
 void    display(void *var, t_params *params);
 void 	display_char(char *var, t_params *params);
+void	ft_print_memory(void *addr, size_t size);
+
 
 					/*PARSING */
 int 	flags(const char *str, int pos, t_params *params);
@@ -61,9 +63,10 @@ int		specifier_C(t_params *params, t_args *args);
 int     specifier_integer(t_params *params, t_args *args);
 int     specifier_spint(t_params *params, t_args *args);
 int     specifier_float(t_params *params, t_args *args);
+int		print_add(t_params *params, t_args *args);
 
 					/*CONVERT*/
 void    convert_octal(unsigned int nb);
-void    convert_hexlow(unsigned int nb);
+void    convert_hexlow(unsigned int nb, int size_nb, int maj);
 
 #endif

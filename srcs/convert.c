@@ -18,22 +18,27 @@ void        convert_octal(unsigned int nb)
     ft_putnbr(octal);
 }
 
-void    convert_hexlow(unsigned int nb)
+void    convert_hexlow(unsigned int nb, int size_nb, int maj)
 {
-    char tab[8] = {'a','b','c','d','e','f','g'};
-    int tmp;
-    int tmp2;
-    int i;
-    char tmp3;
+    char hex[size_nb + 1];
+	int tmp;
+	int i;
 
-    while (nb / 16 > 0)
-    {
-        tmp = nb % 16;
-        nb /= 16;
-        tmp2 += tmp * i;
-        if (tmp2 > 9)
-            tmp3 = tab[tmp2 - 10];
-        i *= 10;
-    }
-
+	i = 0;
+	while (nb != 0)
+	{
+		tmp = nb % 16;
+		if (tmp < 10)
+			tmp = tmp + 48;
+		else
+		{
+			if (maj)
+				tmp = tmp + 55;
+			else
+				tmp = tmp + 87;
+		}
+		hex[i++] = tmp;
+		nb = nb / 16;
+	}
+	ft_putstr_rev(hex);
 }

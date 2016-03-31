@@ -22,9 +22,11 @@ int     specifier_spint(t_params *params, t_args *args)
         if (params->specifier == 6)
             convert_octal(uni);
         else if (params->specifier == 10)
-            convert_hexlow(uni);
+            convert_hexlow(uni, ft_strnb(&uni), 0);
+		else if (params->specifier == 11)
+			convert_hexlow(uni, ft_strnb(&uni), 1);
         else
-            display(&uni, params);
+			ft_putnbr(uni);
     }
     return (0);
 }
@@ -39,4 +41,15 @@ int     specifier_float(t_params *params, t_args *args)
         display(&db, params);
     }
     return (0);
+}
+
+
+int		print_add(t_params *params, t_args *args)
+{
+	void 	*p;
+
+	(void)params;
+	p = va_arg(args->ap, void *);
+	ft_print_memory(p, sizeof(&p));
+	return (1);
 }

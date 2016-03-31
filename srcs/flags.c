@@ -17,7 +17,8 @@ int			specifier(char format)
 	tab[9] = 'U';
 	tab[10] = 'x';
 	tab[11] = 'X';
-	tab[12] = 'f';
+	tab[12] = 'p';
+	tab[13] = 'f';
 	i = 0;
 	while (i < SPECIFIER)
 	{

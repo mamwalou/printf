@@ -13,8 +13,9 @@ static t_tab    tab[SPECIFIER]=
     {8, specifier_spint},
     {9, specifier_spint},
     {10, specifier_spint},
-    {11, specifier_spint},
-    {12, specifier_float},
+	{11, specifier_spint},
+	{12, print_add},
+    {13, specifier_float},
 };
 
 void        ft_printf(t_params *params, t_args *args)
