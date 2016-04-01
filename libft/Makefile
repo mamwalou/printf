@@ -30,7 +30,7 @@ SRC += ft_strsplit.c ft_strstr.c ft_strsub.c ft_strtrim.c
 SRC += ft_tolower.c ft_toupper.c ft_list_search.c
 SRC += ft_convert_s.c ft_findstr.c ft_strcatdup.c
 SRC += ft_strconct.c ft_strcmp_name.c ft_strcmp_date.c
-SRC += ft_strcmp_size.c
+SRC += ft_strcmp_size.c ft_strnb.c ft_putstr_rev.c
 DEL = rm -f
 
 OBJ = $(SRC:.c=.o)
@@ -48,7 +48,7 @@ $(NAME): $(OBJ)
 
 %.o: %.c
 	@gcc -o $@ -c $< -I.Includes/
-	@echo [36mCompilation of[1m $< [0m[32m done [37m
+
 clean:
 	@$(DEL) $(OBJ)
 	@echo
@@ -67,4 +67,3 @@ re: fclean all
 	@echo
 
 .PHONY: all clean fclean re
-
