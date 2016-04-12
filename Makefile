@@ -29,7 +29,7 @@ INC = $(addprefix -I,$(INC_PATH))
 
 all:$(NAMEA)
 
-$(NAMEA): $(OBJ) lib
+$(NAMEA): $(OBJ) libf
 	$(ARRC) $(NAME) $(OBJ)
 	$(LIBTOOL) -static -o $(NAMEA) libft/libft.a $(NAME)
 	@rm $(NAME)
@@ -48,13 +48,10 @@ clean:
 	make -C $(LIB_PATH) clean
 
 fclean: clean
-	rm -rf $(NAME)
+	rm -rf $(NAMEA)
 	make -C $(LIB_PATH) fclean
-	@mkdir -p $(OBJ_PATH)
-
 
 re: fclean all
-	make -C $(LIB_PATH) re
 
 norme:
 	norminette $(SRC)

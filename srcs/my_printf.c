@@ -35,9 +35,10 @@ int			to_convert(const char *str, int pos, t_params *params)
 	return (pos + 1);
 }
 
-int			my_printf(const char *format, ...)
+int			ft_printf(const char *format, ...)
 {
 	int		i;
+	int		ret;
 	t_args	args;
 	t_params params;
 	int tmp = 0;
@@ -48,25 +49,14 @@ int			my_printf(const char *format, ...)
 	while (format[i])
 	{
 		if ((format[i] == '%') && (i = to_convert(format, i, &params)) > tmp)
-			ft_printf(&params, &args);
+			ret += my_printf(&params, &args);
 		else
 		{
 			ft_putchar(format[i]);
 			i++;
+			ret++;
 		}
 	}
 	va_end(args.ap);
 	return(i);
-}
-
-int main()
-{
-	int test;
-
-	int *ptr;
-	test = 42;
-	ptr = &test;
-	printf("%p\n", ptr);
-	my_printf("%p\n", ptr);
-	return (0);
 }

@@ -18,7 +18,7 @@ static t_tab    tab[SPECIFIER]=
     {13, specifier_float},
 };
 
-void        ft_printf(t_params *params, t_args *args)
+void        my_printf(t_params *params, t_args *args)
 {
     int     i;
 
