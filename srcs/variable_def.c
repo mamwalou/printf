@@ -18,7 +18,7 @@ static t_tab    tab[SPECIFIER]=
     {13, specifier_float},
 };
 
-void        my_printf(t_params *params, t_args *args)
+int        my_printf(t_params *params, t_args *args)
 {
     int     i;
 
@@ -26,5 +26,6 @@ void        my_printf(t_params *params, t_args *args)
     while (tab[i].i != params->specifier && i <= SPECIFIER)
         i++;
     if (i <= SPECIFIER)
-        tab[i].f(params, args);
+        return (tab[i].f(params, args));
+	return (0);
 }

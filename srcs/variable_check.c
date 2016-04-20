@@ -9,8 +9,9 @@ int     specifier_s(t_params *params, t_args *args)
         s = va_arg(args->ap, char*);
         ft_putstr(s);
     }
-    return(0);
+    return(ft_strlen(s));
 }
+
 int     specifier_S(t_params *params, t_args *args)
 {
     wchar_t *str;
@@ -20,6 +21,7 @@ int     specifier_S(t_params *params, t_args *args)
     ft_putstr((char*)str);
     return (0);
 }
+
 int     specifier_c(t_params *params, t_args *args)
 {
     char c;

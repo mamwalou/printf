@@ -36,15 +36,14 @@ typedef struct			s_tab
 	int 				(*f)(t_params *, t_args *);
 }						t_tab;
 
-int		my_printf(const char *format, ...);
+int		ft_printf(const char *format, ...);
 
 					/*PRINT*/
 void 	printf_gest(va_list ap, int pos);
 void	gest_error(va_list ap, int pos);
 void    display(void *var, t_params *params);
 void 	display_char(char *var, t_params *params);
-void	ft_print_memory(void *addr, size_t size);
-
+int		ft_print_memory(void *addr, size_t size);
 
 					/*PARSING */
 int 	flags(const char *str, int pos, t_params *params);
@@ -54,7 +53,7 @@ int 	lenght_gest(const char *str);
 int		specifier(char format);
 
 					/*DEFINE VARIABLE USE*/
-void	ft_printf(t_params *params, t_args *args);
+int		my_printf(t_params *params, t_args *args);
 int		specifier_integer(t_params *params, t_args *args);
 int     specifier_s(t_params *params, t_args *args);
 int     specifier_S(t_params *params, t_args *args);

@@ -19,6 +19,7 @@
 # include <time.h>
 # define BUF_SIZE 1496
 
+size_t				ft_nbsize(int nb);
 void				ft_putstr_rev(char *s);
 int					ft_strnb(void *var);
 int					ft_strcmp_size(off_t s1, off_t s2, int reverse);
