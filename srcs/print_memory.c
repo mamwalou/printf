@@ -1,10 +1,15 @@
 #include "../includes/my_printf.h"
 
-void 			printhex(size_t nb, char *base)
+int 			printhex(size_t nb, char *base)
 {
+	static int count;
+
+	count = 0;
 	if (nb >= 16)
 		printhex(nb / 16, base);
 	ft_putchar(base[(int)(nb % 16)]);
+	count++;
+	return(count);
 }
 
 int			ft_print_memory(void *addr, size_t size)
@@ -14,10 +19,9 @@ int			ft_print_memory(void *addr, size_t size)
 	int ret;
 
 	(void)size;
-	ret = 3;
+	ret = 2;
 	ptr_to_print = (size_t)addr;
 	ft_putstr("0x");
-	printhex(ptr_to_print, "0123456789abcdef");
-	ret += ft_nbsize((int)ptr_to_print);
+	ret += printhex(ptr_to_print, "0123456789abcdef");
 	return (ret);
 }

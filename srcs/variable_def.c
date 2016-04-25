@@ -25,6 +25,7 @@ int        my_printf(t_params *params, t_args *args)
     i = 0;
     while (tab[i].i != params->specifier && i <= SPECIFIER)
         i++;
+	ft_putnbr(i);
     if (i <= SPECIFIER)
         return (tab[i].f(params, args));
 	return (0);

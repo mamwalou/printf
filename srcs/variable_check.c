@@ -26,6 +26,7 @@ int     specifier_c(t_params *params, t_args *args)
 {
     char c;
 
+
     if (params->lenght > LENGHT)
     {
         c = va_arg(args->ap, int);
@@ -36,10 +37,13 @@ int     specifier_c(t_params *params, t_args *args)
 
 int specifier_C(t_params *params, t_args *args)
 {
-    wint_t win;
+    wchar_t test;
 
 	(void)params;
-    win = (wint_t)va_arg(args->ap, int);
-    ft_putchar((char)win);
+	if (params->lenght > LENGHT)
+	{
+		test = va_arg(args->ap, wchar_t);
+		ft_putchar((const char)unicode_to_utf8(test));
+	}
     return (0);
 }
