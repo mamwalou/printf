@@ -17,8 +17,15 @@
 # include <unistd.h>
 # include <string.h>
 # include <time.h>
+# include <wchar.h>
 # define BUF_SIZE 1496
 
+int					ft_lenghstrwchar(const wchar_t *wc);
+int					ft_lenghtwchar(wchar_t wc);
+void 				ft_putwstr(wchar_t *s);
+void 				ft_putwstr_fd(wchar_t *s, int fd);
+void 				ft_putwchar(wchar_t wc);
+void 				ft_putwchar_fd(wchar_t wc, int fd);
 size_t				ft_nbsize(int nb);
 void				ft_putstr_rev(char *s);
 int					ft_strnb(void *var);
