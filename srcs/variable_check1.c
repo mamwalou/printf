@@ -1,57 +1,59 @@
 #include "../includes/my_printf.h"
 
-int     specifier_integer(t_params *params, t_args *args)
+int     specifier_integer(t_params *params, t_args *args, t_tabvar *var)
 {
-    int     i;
-
-	i = 0;
-    if (params->lenght > LENGHT)
+    if (params->lenght > LENGHT || params->specifier != 5)
     {
-        i = va_arg(args->ap, int);
-        ft_putnbr(i);
+        var->var_unsint = va_arg(args->ap, int);
+        ft_putnbr(var->var_unsint);
+		return (ft_nbsize(var->var_unsint));
     }
-    return (ft_nbsize(i));
+	if (params->specifier == 5)
+	{
+		var->var_long = (long)va_arg(args->ap, int);
+		ft_putnbr(var->var_long);
+		return (ft_nbsize(var->var_long));
+	}
+	return(-1);
 }
 
-int     specifier_spint(t_params *params, t_args *args)
+int     specifier_spint(t_params *params, t_args *args, t_tabvar *var)
 {
-    unsigned int uni;
 
-	uni = 0;
     if (params->lenght > LENGHT)
     {
-        uni = (unsigned)va_arg(args->ap, int);
-        if (params->specifier == 6)
-            convert_octal(uni);
-        else if (params->specifier == 10)
-            convert_hexlow(uni, ft_strnb(&uni), 0);
-		else if (params->specifier == 11)
-			convert_hexlow(uni, ft_strnb(&uni), 1);
+        var->var_unsint = (unsigned)va_arg(args->ap, int);
+        if (params->specifier == 7 || params->specifier == 8)
+            convert_octal(var->var_unsint);
+        else if (params->specifier == 11)
+            convert_hexlow(var->var_unsint, ft_strnb(&var->var_unsint), 0);
+		else if (params->specifier == 12)
+			convert_hexlow(var->var_unsint, ft_strnb(&var->var_unsint), 1);
         else
-			ft_putnbr(uni);
+			ft_putnbr(var->var_unsint);
+		if (var->var_unsint == 0)
+			return(1);
+		return (ft_nbsize(var->var_unsint));
     }
-    return (ft_nbsize(uni));
+	return (-1);
 }
 
-int     specifier_float(t_params *params, t_args *args)
+int     specifier_float(t_params *params, t_args *args, t_tabvar *var)
 {
-    double db;
 
-	db = 0;
     if (params->lenght > LENGHT)
     {
-        db = va_arg(args->ap, double);
-        display(&db, params);
+        var->var_double = va_arg(args->ap, double);
     }
-    return (ft_nbsize(db));
+    return (ft_nbsize(var->var_double));
 }
 
 
-int		print_add(t_params *params, t_args *args)
+int		print_add(t_params *params, t_args *args, t_tabvar *var)
 {
 	void 	*p;
 	(void)params;
-
+	(void)var;
 	p = va_arg(args->ap, void *);
 	return (ft_print_memory(p, sizeof(&p)));
 }

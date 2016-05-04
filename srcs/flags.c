@@ -10,15 +10,16 @@ int			specifier(char format)
 	tab[2] = 'c';
 	tab[3] = 'C';
 	tab[4] = 'd';
-	tab[5] = 'i';
-	tab[6] = 'o';
-	tab[7] = 'O';
-	tab[8] = 'u';
-	tab[9] = 'U';
-	tab[10] = 'x';
-	tab[11] = 'X';
-	tab[12] = 'p';
-	tab[13] = 'f';
+	tab[5] = 'D';
+	tab[6] = 'i';
+	tab[7] = 'o';
+	tab[8] = 'O';
+	tab[9] = 'u';
+	tab[10] = 'U';
+	tab[11] = 'x';
+	tab[12] = 'X';
+	tab[13] = 'p';
+	tab[14] = 'f';
 	i = 0;
 	while (i < SPECIFIER)
 	{

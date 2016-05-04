@@ -14,11 +14,14 @@ static t_tab    tab[SPECIFIER]=
     {9, specifier_spint},
     {10, specifier_spint},
 	{11, specifier_spint},
-	{12, print_add},
+	{12, specifier_spint},
+	{13, print_add},
     {13, specifier_float},
+	{14, specifier_float},
+
 };
 
-int        my_printf(t_params *params, t_args *args)
+int        my_printf(t_params *params, t_args *args, t_tabvar *var)
 {
     int     i;
 
@@ -26,6 +29,6 @@ int        my_printf(t_params *params, t_args *args)
     while (tab[i].i != params->specifier && i <= SPECIFIER)
         i++;
     if (i <= SPECIFIER)
-        return (tab[i].f(params, args));
+        return (tab[i].f(params, args, var));
 	return (0);
 }

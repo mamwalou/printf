@@ -9,6 +9,22 @@ static void		init_parm(t_params *params)
 	params->specifier = 0;
 }
 
+static void 	init_var(t_tabvar *var)
+{
+	var->var_wstr = NULL;
+	var->var_wint = 0;
+	var->var_c = 0;
+	var->var_str = 0;
+	var->var_int = 0;
+	var->var_sh = 0;
+	var->var_long = 0;
+	var->var_longlong = 0;
+	var->var_shint = 0;
+	var->var_unsint = 0;
+	var->var_unlong = 0;
+	var->var_unlonglong = 0;
+	var->var_double = 0;
+}
 int			to_convert(const char *str, int *pos, t_params *params)
 {
 	if (str[*pos] != '%')
@@ -38,19 +54,21 @@ int			to_convert(const char *str, int *pos, t_params *params)
 
 int			ft_printf(const char *format, ...)
 {
-	int		i;
-	int		ret;
-	t_args	args;
-	t_params params;
+	int			i;
+	int			ret;
+	t_args		args;
+	t_tabvar	var;
+	t_params	params;
 
 	i = 0;
 	ret = 0;
 	va_start(args.ap, format);
 	init_parm(&params);
+	init_var(&var);
 	while (format[i])
 	{
 		if ((to_convert(format, &i, &params)) > 0)
-			ret += my_printf(&params, &args);
+			ret += my_printf(&params, &args, &var);
 		else
 		{
 			ft_putchar(format[i]);
