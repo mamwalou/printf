@@ -18,8 +18,11 @@
 # include <string.h>
 # include <time.h>
 # include <wchar.h>
+# include <limits.h>
 # define BUF_SIZE 1496
 
+int					ft_lenghtlong(long long ll);
+void				ft_printlong(long long ll);
 int					ft_lenghstrwchar(const wchar_t *wc);
 int					ft_lenghtwchar(wchar_t wc);
 void 				ft_putwstr(wchar_t *s);
@@ -27,7 +30,7 @@ void 				ft_putwstr_fd(wchar_t *s, int fd);
 void 				ft_putwchar(wchar_t wc);
 void 				ft_putwchar_fd(wchar_t wc, int fd);
 size_t				ft_nbsize(int nb);
-void				ft_putstr_rev(char *s);
+void				ft_putstr_rev(char *s, int size);
 int					ft_strnb(void *var);
 int					ft_strcmp_size(off_t s1, off_t s2, int reverse);
 int					ft_strcmp_date(time_t t1, time_t t2, int reverse);

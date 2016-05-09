@@ -1,4 +1,4 @@
-static t_lght		lght[LENGHT]=
+/*static t_lght		lght[LENGHT]=
 {
 	{0, lenght_t},
 	{1, lenght_h},
@@ -12,3 +12,4 @@ static t_lght		lght[LENGHT]=
 int			print_integers_lenght(int lght,t_args *args, t_tabvar *var)
 {
 }
+*/

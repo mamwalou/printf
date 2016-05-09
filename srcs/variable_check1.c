@@ -2,21 +2,22 @@
 
 int     specifier_integer(t_params *params, t_args *args, t_tabvar *var)
 {
-    if (params->lenght > LENGHT || params->specifier != 5)
-    {
-        var->var_unsint = va_arg(args->ap, int);
-        ft_putnbr(var->var_unsint);
-		return (ft_nbsize(var->var_unsint));
-    }
-	else if (params->lenght > LENGHT || params->specifier == 5)
+	if (params->lenght > LENGHT)
 	{
-		var->var_long = (long)va_arg(args->ap, int);
-		ft_putnbr(var->var_long);
-		return (ft_nbsize(var->var_long));
+    	if (params->specifier != 5)
+    	{
+        	var->var_unsint = va_arg(args->ap, int);
+        	ft_putnbr(var->var_unsint);
+			return (ft_nbsize(var->var_unsint));
+    	}
+		else if (params->specifier == 5)
+		{
+			var->var_longlong= va_arg(args->ap, long long);
+			ft_printlong(var->var_longlong);
+			return (ft_lenghtlong(var->var_longlong));
+		}
 	}
-	else if (params->lenght < lenght)
-		print_integers_lenght(params->lenght, args,var);
-	return(-1);
+	return (-1);
 }
 
 int     specifier_spint(t_params *params, t_args *args, t_tabvar *var)
@@ -26,11 +27,11 @@ int     specifier_spint(t_params *params, t_args *args, t_tabvar *var)
     {
         var->var_unsint = (unsigned)va_arg(args->ap, int);
         if (params->specifier == 7 || params->specifier == 8)
-            convert_octal(var->var_unsint);
+            return (convert_octal(var->var_unsint, ft_strnb(&var->var_unsint)));
         else if (params->specifier == 11)
-            convert_hexlow(var->var_unsint, ft_strnb(&var->var_unsint), 0);
+            return (convert_hx(var->var_unsint, ft_strnb(&var->var_unsint), 0));
 		else if (params->specifier == 12)
-			convert_hexlow(var->var_unsint, ft_strnb(&var->var_unsint), 1);
+			return (convert_hx(var->var_unsint, ft_strnb(&var->var_unsint), 1));
         else
 			ft_putnbr(var->var_unsint);
 		if (var->var_unsint == 0)

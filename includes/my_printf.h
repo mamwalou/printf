@@ -36,12 +36,8 @@ typedef struct			s_tabvar
 	char				var_c;
 	char				*var_str;
 	int					var_int;
-	short				var_sh;
-	long				var_long;
 	long long			var_longlong;
-	unsigned short		var_shint;
 	unsigned int		var_unsint;
-	unsigned long		var_unlong;
 	unsigned long long	var_unlonglong;
 	double				var_double;
 }						t_tabvar;
@@ -97,7 +93,7 @@ int		lenght_hh(t_tabvar *var);
 int		lenght_ll(t_tabvar *var);
 
 					/*CONVERT*/
-void    convert_octal(unsigned int nb);
-void    convert_hexlow(unsigned int nb, int size_nb, int maj);
+int        convert_octal(unsigned int nb, int size_nb);
+int    convert_hx(unsigned int nb, int size_nb, int maj);
 
 #endif
