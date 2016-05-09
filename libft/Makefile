@@ -33,6 +33,7 @@ SRC += ft_strconct.c ft_strcmp_name.c ft_strcmp_date.c
 SRC += ft_strcmp_size.c ft_strnb.c ft_putstr_rev.c
 SRC += ft_nbsize.c ft_putwchar.c ft_putwchar_fd.c ft_putwstr.c
 SRC += ft_putwstr_fd.c ft_lenghtwchar.c ft_lenghtstrwchar.c
+SRC += ft_lenghtlong.c ft_printlong.c
 
 
 DEL = rm -f
