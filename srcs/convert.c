@@ -20,11 +20,13 @@ void        convert_octal(unsigned int nb)
 
 void    convert_hexlow(unsigned int nb, int size_nb, int maj)
 {
-    char hex[size_nb + 1];
+    char hex[size_nb];
 	int tmp;
 	int i;
+	int size;
 
 	i = 0;
+	size = 0;
 	while (nb != 0)
 	{
 		tmp = nb % 16;
@@ -38,9 +40,10 @@ void    convert_hexlow(unsigned int nb, int size_nb, int maj)
 				tmp = tmp + 87;
 		}
 		hex[i++] = tmp;
+		size++;
 		nb = nb / 16;
 	}
-	ft_putstr_rev(hex);
+	ft_putstr_rev(hex, size);
 }
 
 unsigned char* unicode_to_utf8(wchar_t c)

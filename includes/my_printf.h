@@ -52,6 +52,12 @@ typedef struct			s_tab
 	int 				(*f)(t_params *, t_args *, t_tabvar *);
 }						t_tab;
 
+typedef struct			s_lght
+{
+	int					i;
+	int					(*f)(t_tabvar *);
+}						t_lght;
+
 int		ft_printf(const char *format, ...);
 
 					/*PRINT*/
@@ -60,6 +66,8 @@ void	gest_error(va_list ap, int pos);
 void    display(void *var, t_params *params);
 void 	display_char(char *var, t_params *params);
 int		ft_print_memory(void *addr, size_t size);
+int		print_add(t_params *params, t_args *args, t_tabvar *var);
+int		print_integers_lenght(int lght,t_args *args, t_tabvar *var);
 
 					/*PARSING */
 int 	flags(const char *str, int pos, t_params *params);
@@ -78,7 +86,15 @@ int		specifier_C(t_params *params, t_args *args, t_tabvar *var);
 int     specifier_integer(t_params *params, t_args *args, t_tabvar *var);
 int     specifier_spint(t_params *params, t_args *args, t_tabvar *var);
 int     specifier_float(t_params *params, t_args *args, t_tabvar *var);
-int		print_add(t_params *params, t_args *args, t_tabvar *var);
+
+int		lenght_t(t_tabvar *var);
+int		lenght_h(t_tabvar *var);
+int		lenght_l(t_tabvar *var);
+int		lenght_L(t_tabvar *var);
+int		lenght_j(t_tabvar *var);
+int		lenght_z(t_tabvar *var);
+int		lenght_hh(t_tabvar *var);
+int		lenght_ll(t_tabvar *var);
 
 					/*CONVERT*/
 void    convert_octal(unsigned int nb);

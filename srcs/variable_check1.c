@@ -8,12 +8,14 @@ int     specifier_integer(t_params *params, t_args *args, t_tabvar *var)
         ft_putnbr(var->var_unsint);
 		return (ft_nbsize(var->var_unsint));
     }
-	if (params->specifier == 5)
+	else if (params->lenght > LENGHT || params->specifier == 5)
 	{
 		var->var_long = (long)va_arg(args->ap, int);
 		ft_putnbr(var->var_long);
 		return (ft_nbsize(var->var_long));
 	}
+	else if (params->lenght < lenght)
+		print_integers_lenght(params->lenght, args,var);
 	return(-1);
 }
 
