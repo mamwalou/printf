@@ -7,45 +7,60 @@ static void		init_parm(t_params *params)
 	params->precision = 0;
 	params->lenght = 0;
 	params->specifier = 0;
+	params->count_flags = 0;
+	params->flags = 0;
+
 }
 
-static void 	init_var(t_tabvar *var)
-{
-	var->var_wstr = NULL;
-	var->var_wint = 0;
-	var->var_c = 0;
-	var->var_str = 0;
-	var->var_int = 0;
-	var->var_longlong = 0;
-	var->var_unsint = 0;
-	var->var_unlonglong = 0;
-	var->var_double = 0;
-}
 int			to_convert(const char *str, int *pos, t_params *params)
 {
+	int count_space;
+
+	init_parm(params);
+	count_space = 0;
 	if (str[*pos] != '%')
 		return (-1);
 	*pos += 1;
-	if (str[*pos] == '%')
-		return (-1);
-	while ((flags(str, *pos, params)) > 0)
-		*pos += 1;
-	while ((init_width(str, *pos, params)) > 0)
-		*pos += 1;
-	if (str[*pos] == '.')
+	while (str[*pos])
 	{
-		*pos += 1;
-		while ((get_precision(str, *pos, params)) > 0)
+		if ((flags(str, pos, params)) > 0)
+			;
+		while ((init_width(str, *pos + params->count_flags, params)) > 0)
+			return (1);
+		if (str[*pos] == '.')
+		{
 			*pos += 1;
+			while ((get_precision(str, *pos, params)) > 0)
+			{
+				*pos += 1;
+				return (count_space +1);
+			}
+		}
+		params->lenght = lenght_gest(str + *pos + params->count_flags);
+		if (params->lenght < 6)
+			*pos += 1 + params->count_flags;
+		if (params->lenght == 6 || params->lenght == 7)
+			*pos += 2 + params->count_flags;
+		if ((params->specifier = specifier(str[*pos + params->count_flags])) < SPECIFIER)
+			*pos += 1 + params->count_flags;
+		else
+			return (-1);
+		return (1);
 	}
-	params->lenght = lenght_gest(str + *pos);
-	if (params->lenght < 6)
-		*pos += 1;
-	if (params->lenght == 6 || params->lenght == 7)
-		*pos += 2;
-	if ((params->specifier = specifier(str[*pos])) < SPECIFIER)
-		*pos += 1;
+	return(-1);
+}
+
+int 		print(const char *format, int *pos ,t_params *params)
+{
+	if (params->count_flags)
+		*pos += params->count_flags;
+	if (format[*pos])
+		ft_putchar(format[*pos]);
+	else
+		return(0);
+	*pos += 1;
 	return (1);
+
 }
 
 int			ft_printf(const char *format, ...)
@@ -53,24 +68,18 @@ int			ft_printf(const char *format, ...)
 	int			i;
 	int			ret;
 	t_args		args;
-	t_tabvar	var;
 	t_params	params;
 
 	i = 0;
 	ret = 0;
 	va_start(args.ap, format);
-	init_parm(&params);
-	init_var(&var);
+
 	while (format[i])
 	{
 		if ((to_convert(format, &i, &params)) > 0)
-			ret += my_printf(&params, &args, &var);
+			ret += my_printf(&params, &args);
 		else
-		{
-			ft_putchar(format[i]);
-			i++;
-			ret++;
-		}
+			ret += print(format, &i, &params);
 	}
 	va_end(args.ap);
 	return(ret);

@@ -24,20 +24,29 @@ int			specifier(char format)
 	while (i < SPECIFIER)
 	{
 		if (format == tab[i])
+		{
 			return(i);
+		}
 		i++;
 	}
 	return (i);
 }
 
-int			flags(const char *str, int pos, t_params *params)
+int			flags(const char *str, int *pos, t_params *params)
 {
-	if (str[pos] == '0' || str[pos] == '+' || str[pos] == ' ')
+	int i;
+
+	i = *pos;
+	if (str[*pos] == '0' || str[*pos] == '+')
 	{
-		params->flags = str[pos];
 		return (1);
 	}
-	return (0);
+	while (str[i] == ' ')
+	{
+		params->count_flags++;
+		i++;
+	}
+	return(params->count_flags);
 }
 
 int			init_width(const char *str, int pos, t_params *params)

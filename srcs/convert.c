@@ -18,7 +18,6 @@ int        convert_octal(unsigned int nb, int size_nb)
 	ft_putstr_rev(octal, count);
 	if (octal[0] == 0)
 	{
-		ft_putstr("in");
 		ft_putchar('0');
 		return (1);
 	}
@@ -48,5 +47,10 @@ int    convert_hx(unsigned int nb, int size_nb, int maj)
 		nb = nb / 16;
 	}
 	ft_putstr_rev(hex, i);
+	if (hex[0] == 0)
+	{
+		ft_putchar('0');
+		return (1);
+	}
 	return (i);
 }

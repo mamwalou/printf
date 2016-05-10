@@ -7,7 +7,10 @@ int     specifier_s(t_params *params, t_args *args, t_tabvar *var)
         if ((var->var_str = va_arg(args->ap, char*)) != NULL)
 			ft_putstr(var->var_str);
 		else
+		{
 			ft_putstr("(null)");
+			return (6);
+		}
     }
     return(ft_strlen(var->var_str));
 }

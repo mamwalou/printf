@@ -21,14 +21,29 @@ static t_tab    tab[SPECIFIER]=
 
 };
 
-int        my_printf(t_params *params, t_args *args, t_tabvar *var)
+static void 	init_var(t_tabvar *var)
+{
+	var->var_wstr = NULL;
+	var->var_wint = 0;
+	var->var_c = 0;
+	var->var_str = 0;
+	var->var_int = 0;
+	var->var_longlong = 0;
+	var->var_unsint = 0;
+	var->var_unlonglong = 0;
+	var->var_double = 0;
+}
+
+int        my_printf(t_params *params, t_args *args)
 {
     int     i;
+	t_tabvar	var;
 
+	init_var(&var);
     i = 0;
     while (tab[i].i != params->specifier && i <= SPECIFIER)
         i++;
     if (i <= SPECIFIER)
-        return (tab[i].f(params, args, var));
+        return (tab[i].f(params, args, &var));
 	return (0);
 }
