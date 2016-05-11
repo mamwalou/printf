@@ -49,16 +49,9 @@ int specifier_C(t_params *params, t_args *args, t_tabvar *var)
 {
 	if (params->lenght > LENGHT)
 	{
-		if ((var->var_wint = va_arg(args->ap, wint_t)) != 0)
-		{
-			ft_putwchar(var->var_wint);
-			return (ft_lenghtwchar(var->var_wint));
-		}
-		else
-		{
-			ft_putstr("(null)");
-			return (6);
-		}
+		var->var_wint = va_arg(args->ap, wint_t);
+		ft_putwchar(var->var_wint);
+		return (ft_lenghtwchar(var->var_wint));
 	}
 	return (-1);
 }

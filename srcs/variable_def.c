@@ -21,6 +21,18 @@ static t_tab    tab[SPECIFIER]=
 
 };
 
+static t_lght		lght[LENGHT]=
+{
+	{0, lenght_T},
+	{1, lenght_h},
+	{2, lenght_l},
+	{3, lenght_L},
+	{4, lenght_j},
+	{5, lenght_z},
+	{6, lenght_hh},
+	{7, lenght_ll},
+};
+
 static void 	init_var(t_tabvar *var)
 {
 	var->var_wstr = NULL;
@@ -37,13 +49,28 @@ static void 	init_var(t_tabvar *var)
 int        my_printf(t_params *params, t_args *args)
 {
     int     i;
+	int		j;
 	t_tabvar	var;
 
 	init_var(&var);
     i = 0;
-    while (tab[i].i != params->specifier && i <= SPECIFIER)
-        i++;
-    if (i <= SPECIFIER)
-        return (tab[i].f(params, args, &var));
+	j = 0;
+	if (params->lenght > LENGHT)
+	{
+    	while (tab[i].i != params->specifier && i <= SPECIFIER)
+        	i++;
+    	if (i <= SPECIFIER)
+        	return (tab[i].f(params, args, &var));
+	}
+	else
+	{
+		while (tab[i].i != params->specifier && i <= SPECIFIER)
+			i++;
+		if (i > SPECIFIER)
+			return (-1);
+		while (lght[j].j != params->lenght)
+			j++;
+		return(lght[j].f(i, args, &var));
+	}
 	return (0);
 }
