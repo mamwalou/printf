@@ -32,15 +32,13 @@ int			specifier(char format)
 	return (i);
 }
 
-int			flags(const char *str, int *pos, t_params *params)
+int			flags(const char *str, int pos, t_params *params)
 {
 	int i;
 
-	i = *pos;
-	if (str[*pos] == '0' || str[*pos] == '+')
-	{
+	i = pos;
+	if (str[pos] == '0' || str[pos] == '+')
 		return (1);
-	}
 	while (str[i] == ' ')
 	{
 		params->count_flags++;

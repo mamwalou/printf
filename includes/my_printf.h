@@ -26,7 +26,7 @@ typedef struct			s_params
 	int					flags;
 	int					lenght;
 	int					specifier;
-	void 				*var;
+	int					count_flags;
 }						t_params;
 
 typedef struct			s_tabvar
@@ -73,7 +73,7 @@ int 	lenght_gest(const char *str);
 int		specifier(char format);
 
 					/*DEFINE VARIABLE USE*/
-int		my_printf(t_params *params, t_args *args, t_tabvar *var);
+int		my_printf(t_params *params, t_args *args);
 int		specifier_integer(t_params *params, t_args *args, t_tabvar *var);
 int     specifier_s(t_params *params, t_args *args, t_tabvar *var);
 int     specifier_S(t_params *params, t_args *args, t_tabvar *var);
@@ -81,7 +81,7 @@ int     specifier_c(t_params *params, t_args *args, t_tabvar *var);
 int		specifier_C(t_params *params, t_args *args, t_tabvar *var);
 int     specifier_integer(t_params *params, t_args *args, t_tabvar *var);
 int     specifier_spint(t_params *params, t_args *args, t_tabvar *var);
-int     specifier_float(t_params *params, t_args *args, t_tabvar *var);
+int     specifier_slong(t_params *params, t_args *args, t_tabvar *var);
 
 int		lenght_t(t_tabvar *var);
 int		lenght_h(t_tabvar *var);
@@ -93,7 +93,8 @@ int		lenght_hh(t_tabvar *var);
 int		lenght_ll(t_tabvar *var);
 
 					/*CONVERT*/
-int        convert_octal(unsigned int nb, int size_nb);
-int    convert_hx(unsigned int nb, int size_nb, int maj);
+int		convert_loctal(long long nb, int size_nb);
+int		convert_octal(unsigned int nb, int size_nb);
+int		convert_hx(unsigned int nb, int size_nb, int maj);
 
 #endif

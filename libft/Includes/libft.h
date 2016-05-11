@@ -21,7 +21,11 @@
 # include <limits.h>
 # define BUF_SIZE 1496
 
+int					ft_lenghtunint(unsigned int nb);
 int					ft_lenghtlong(long long ll);
+int					ft_lenghtunlong(unsigned long long ll);
+void				ft_printunlong(unsigned long long ll);
+void				ft_printunint(unsigned int n);
 void				ft_printlong(long long ll);
 int					ft_lenghstrwchar(const wchar_t *wc);
 int					ft_lenghtwchar(wchar_t wc);

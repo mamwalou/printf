@@ -8,16 +8,16 @@ static t_tab    tab[SPECIFIER]=
     {3, specifier_C},
     {4, specifier_integer},
     {5, specifier_integer},
-    {6, specifier_spint},
+    {6, specifier_integer},
     {7, specifier_spint},
-    {8, specifier_spint},
+    {8, specifier_integer},
     {9, specifier_spint},
-    {10, specifier_spint},
+    {10, specifier_slong},
 	{11, specifier_spint},
 	{12, specifier_spint},
 	{13, print_add},
-    {13, specifier_float},
-	{14, specifier_float},
+    {13, specifier_slong},
+	{14, specifier_slong},
 
 };
 

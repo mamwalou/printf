@@ -2,19 +2,28 @@
 
 int     specifier_integer(t_params *params, t_args *args, t_tabvar *var)
 {
+
 	if (params->lenght > LENGHT)
 	{
-    	if (params->specifier != 5)
+    	if (params->specifier != 5 && params->specifier != 8)
     	{
-        	var->var_unsint = va_arg(args->ap, int);
-        	ft_putnbr(var->var_unsint);
-			return (ft_nbsize(var->var_unsint));
+        	var->var_int = va_arg(args->ap, int);
+        	ft_putnbr(var->var_int);
+			return (ft_nbsize(var->var_int));
     	}
-		else if (params->specifier == 5)
+		else if (params->specifier == 5 || params->specifier == 8)
 		{
 			var->var_longlong= va_arg(args->ap, long long);
-			ft_printlong(var->var_longlong);
-			return (ft_lenghtlong(var->var_longlong));
+			if (params->specifier == 5)
+			{
+				ft_printlong(var->var_longlong);
+				return (ft_lenghtlong(var->var_longlong));
+			}
+			else if (params->specifier == 8)
+			{
+				return(convert_loctal(var->var_longlong,
+					 ft_lenghtlong(var->var_longlong)));
+			}
 		}
 	}
 	return (-1);
@@ -22,31 +31,30 @@ int     specifier_integer(t_params *params, t_args *args, t_tabvar *var)
 
 int     specifier_spint(t_params *params, t_args *args, t_tabvar *var)
 {
-
-    if (params->lenght > LENGHT)
-    {
-        var->var_unsint = (unsigned)va_arg(args->ap, int);
-        if (params->specifier == 7 || params->specifier == 8)
-            return (convert_octal(var->var_unsint, ft_strnb(&var->var_unsint)));
-        else if (params->specifier == 11)
-            return (convert_hx(var->var_unsint, ft_strnb(&var->var_unsint), 0));
-		else if (params->specifier == 12)
-			return (convert_hx(var->var_unsint, ft_strnb(&var->var_unsint), 1));
-        else
-			ft_putnbr(var->var_unsint);
-		if (var->var_unsint == 0)
-			return(1);
-		return (ft_nbsize(var->var_unsint));
-    }
-	return (-1);
+    var->var_unsint = (unsigned)va_arg(args->ap, int);
+    if (params->specifier == 7)
+        return (convert_octal(var->var_unsint, ft_strnb(&var->var_unsint)));
+    else if (params->specifier == 11)
+        return (convert_hx(var->var_unsint, ft_strnb(&var->var_unsint), 0));
+	else if (params->specifier == 12)
+		return (convert_hx(var->var_unsint, ft_strnb(&var->var_unsint), 1));
+    else if (params->specifier == 9)
+		ft_printunint(var->var_unsint);
+	if (var->var_unsint == 0)
+		return(1);
+	return (ft_lenghtunint(var->var_unsint));
 }
 
-int     specifier_float(t_params *params, t_args *args, t_tabvar *var)
+int     specifier_slong(t_params *params, t_args *args, t_tabvar *var)
 {
-
     if (params->lenght > LENGHT)
     {
-        var->var_double = va_arg(args->ap, double);
+		if (params->specifier == 10)
+		{
+			var->var_unlonglong = va_arg(args->ap, unsigned long long);
+			ft_printunlong(var->var_unlonglong);
+			return(ft_lenghtunlong(var->var_unlonglong));
+		}
     }
     return (ft_nbsize(var->var_double));
 }

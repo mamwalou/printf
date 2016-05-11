@@ -1,5 +1,29 @@
 #include "../includes/my_printf.h"
 
+int        convert_loctal(long long nb, int size_nb)
+{
+	char octal[size_nb];
+    int tmp;
+    int i;
+	int count;
+
+    i = 1;
+	count = 0;
+	if (nb == 0)
+	{
+		ft_putchar('0');
+		return (1);
+	}
+    while (nb != 0)
+    {
+        tmp = nb % 8;
+        octal[count++] = tmp + 48;
+		nb /= 8;
+    }
+	ft_putstr_rev(octal, count);
+	return(count);
+}
+
 int        convert_octal(unsigned int nb, int size_nb)
 {
 	char octal[size_nb];
@@ -9,6 +33,11 @@ int        convert_octal(unsigned int nb, int size_nb)
 
     i = 1;
 	count = 0;
+	if (nb == 0)
+	{
+		ft_putchar('0');
+		return (1);
+	}
     while (nb != 0)
     {
         tmp = nb % 8;
@@ -16,11 +45,6 @@ int        convert_octal(unsigned int nb, int size_nb)
 		nb /= 8;
     }
 	ft_putstr_rev(octal, count);
-	if (octal[0] == 0)
-	{
-		ft_putchar('0');
-		return (1);
-	}
 	return(count);
 }
 
@@ -31,6 +55,11 @@ int    convert_hx(unsigned int nb, int size_nb, int maj)
 	int i;
 
 	i = 0;
+	if (nb == 0)
+	{
+		ft_putchar('0');
+		return (1);
+	}
 	while (nb != 0)
 	{
 		tmp = nb % 16;
@@ -47,10 +76,6 @@ int    convert_hx(unsigned int nb, int size_nb, int maj)
 		nb = nb / 16;
 	}
 	ft_putstr_rev(hex, i);
-	if (hex[0] == 0)
-	{
-		ft_putchar('0');
-		return (1);
-	}
+
 	return (i);
 }

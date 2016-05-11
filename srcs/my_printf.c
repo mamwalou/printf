@@ -23,7 +23,7 @@ int			to_convert(const char *str, int *pos, t_params *params)
 	*pos += 1;
 	while (str[*pos])
 	{
-		if ((flags(str, pos, params)) > 0)
+		if ((flags(str, *pos, params)) > 0)
 			;
 		while ((init_width(str, *pos + params->count_flags, params)) > 0)
 			return (1);
