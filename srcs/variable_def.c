@@ -35,9 +35,13 @@ static t_lght		lght[LENGHT]=
 
 static void 	init_var(t_tabvar *var)
 {
+	var->var_unchar = 0;
+	var->var_unshort = 0;
 	var->var_wstr = NULL;
 	var->var_wint = 0;
+	var->var_short = 0;
 	var->var_c = 0;
+	var->var_signedc = 0;
 	var->var_str = 0;
 	var->var_int = 0;
 	var->var_longlong = 0;

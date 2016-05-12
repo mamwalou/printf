@@ -33,9 +33,13 @@ typedef struct			s_tabvar
 {
 	wchar_t				*var_wstr;
 	wchar_t				var_wint;
+	unsigned short		var_unshort;
 	char				var_c;
+	signed char			var_signedc;
+	unsigned char		var_unchar;
 	char				*var_str;
 	int					var_int;
+	short				var_short;
 	long long			var_longlong;
 	unsigned int		var_unsint;
 	unsigned long long	var_unlonglong;
@@ -93,6 +97,7 @@ int		lenght_hh(int specifier, t_args *args, t_tabvar *var);
 int		lenght_ll(int specifier, t_args *args, t_tabvar *var);
 
 					/*CONVERT*/
+int        convert_ushctal(unsigned short nb, int size_nb);
 int     convert_uloctal(unsigned long long nb, int size_nb);
 int		convert_loctal(long long nb, int size_nb);
 int		convert_octal(unsigned int nb, int size_nb);

@@ -1,21 +1,5 @@
 #include "../includes/my_printf.h"
 
-int		lenght_T(int specifier, t_args *args, t_tabvar *var)
-{
-	(void)specifier;
-	(void)args;
-	(void)var;
-	return (0);
-}
-
-int		lenght_h(int specifier, t_args *args, t_tabvar *var)
-{
-	(void)specifier;
-	(void)args;
-	(void)var;
-	return (0);
-}
-
 static int		lenght_l2(int specifier, t_args *args, t_tabvar *var)
 {
 	var->var_unlonglong = va_arg(args->ap, unsigned long long);
@@ -33,6 +17,7 @@ static int		lenght_l2(int specifier, t_args *args, t_tabvar *var)
 	else if (specifier == 12)
 		return (convert_unlhx(var->var_unlonglong,
 			ft_lenghtunlong(var->var_unlonglong), 1));
+	return (-1);
 }
 
 static int		lenght_l1(int specifier, t_args *args, t_tabvar *var)
@@ -43,7 +28,18 @@ static int		lenght_l1(int specifier, t_args *args, t_tabvar *var)
 		ft_putwchar(var->var_wint);
 		return (ft_lenghtwchar(var->var_wint));
 	}
+	else if (specifier == 10 || specifier == 5)
+	{
+		var->var_unshort = (unsigned)va_arg(args->ap, int);
+		ft_putnbr(var->var_unshort);
+		return (ft_nbsize(var->var_unshort));
 
+	}
+	else if (specifier == 8)
+	{
+		var->var_unshort = (unsigned)va_arg(args->ap, int);
+		return (convert_octal(var->var_unshort, ft_strnb(&var->var_unshort)));
+	}
 	return (lenght_l2(specifier, args, var));
 }
 
