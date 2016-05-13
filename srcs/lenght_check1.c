@@ -6,7 +6,7 @@
 /*   By: sbeline <sbeline@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:25:42 by sbeline           #+#    #+#             */
-/*   Updated: 2016/05/13 17:52:07 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/05/13 18:02:25 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,5 +130,6 @@ int					lenght_ll(int specifier, t_args *args, t_tabvar *var)
 		else
 			return (convert_unlhx(var->var_unlonglong,
 					ft_strnb(&var->var_unlonglong), 1));
+	}
 	return (lenght_ll1(specifier, args, var));
 }
