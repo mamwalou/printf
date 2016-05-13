@@ -6,10 +6,10 @@
 /*   By: sbeline <sbeline@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/31 19:15:32 by sbeline           #+#    #+#             */
-/*   Updated: 2015/03/31 19:23:44 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/05/13 17:08:41 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "Includes/libft.h"
+
 
 char	*rev_str(char *s1)
 {
