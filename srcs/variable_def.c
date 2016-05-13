@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   variable_def.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sbeline <sbeline@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/05/13 16:27:57 by sbeline           #+#    #+#             */
+/*   Updated: 2016/05/13 17:43:31 by sbeline          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/my_printf.h"
 
 static t_tab    tab[SPECIFIER]=
@@ -17,20 +29,16 @@ static t_tab    tab[SPECIFIER]=
 	{12, specifier_spint},
 	{13, print_add},
     {13, specifier_slong},
-	{14, specifier_slong},
-
 };
 
 static t_lght		lght[LENGHT]=
 {
-	{0, lenght_T},
-	{1, lenght_h},
-	{2, lenght_l},
-	{3, lenght_L},
-	{4, lenght_j},
-	{5, lenght_z},
-	{6, lenght_hh},
-	{7, lenght_ll},
+	{0, lenght_h},
+	{1, lenght_l},
+	{2, lenght_j},
+	{3, lenght_z},
+	{4, lenght_hh},
+	{5, lenght_ll},
 };
 
 static void 	init_var(t_tabvar *var)

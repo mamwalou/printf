@@ -1,5 +1,16 @@
-#include "../includes/my_printf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   my_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sbeline <sbeline@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/05/13 16:27:41 by sbeline           #+#    #+#             */
+/*   Updated: 2016/05/13 17:43:30 by sbeline          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "../includes/my_printf.h"
 
 static void		init_parm(t_params *params)
 {
@@ -37,9 +48,9 @@ int			to_convert(const char *str, int *pos, t_params *params)
 			}
 		}
 		params->lenght = lenght_gest(str + *pos + params->count_flags);
-		if (params->lenght < 6)
+		if (params->lenght < 4)
 			*pos += 1 + params->count_flags;
-		if (params->lenght == 6 || params->lenght == 7)
+		if (params->lenght == 4 || params->lenght == 5)
 			*pos += 2 + params->count_flags;
 		if ((params->specifier = specifier(str[*pos + params->count_flags])) < SPECIFIER)
 			*pos += 1 + params->count_flags;

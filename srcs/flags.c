@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   flags.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sbeline <sbeline@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/05/13 16:26:07 by sbeline           #+#    #+#             */
+/*   Updated: 2016/05/13 17:28:53 by sbeline          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/my_printf.h"
 
 int			specifier(char format)
@@ -19,14 +31,11 @@ int			specifier(char format)
 	tab[11] = 'x';
 	tab[12] = 'X';
 	tab[13] = 'p';
-	tab[14] = 'f';
 	i = 0;
 	while (i < SPECIFIER)
 	{
 		if (format == tab[i])
-		{
-			return(i);
-		}
+			return (i);
 		i++;
 	}
 	return (i);
@@ -44,7 +53,7 @@ int			flags(const char *str, int pos, t_params *params)
 		params->count_flags++;
 		i++;
 	}
-	return(params->count_flags);
+	return (params->count_flags);
 }
 
 int			init_width(const char *str, int pos, t_params *params)
