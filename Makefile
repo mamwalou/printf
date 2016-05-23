@@ -9,8 +9,10 @@ SRC_NAME = my_printf.c \
 			variable_check1.c \
 			variable_def.c \
 			lenght.c \
-			print_memory.c \
-			display.c
+			lenght_check.c \
+			lenght_check1.c \
+			lenght_check2.c \
+			print_memory.c
 
 INC_PATH = ./includes/
 SRC_PATH = ./srcs/
