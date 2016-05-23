@@ -9,8 +9,8 @@
 # include "../libft/Includes/libft.h"
 # include <stdio.h>
 
-# define SPECIFIER 16
-# define LENGHT 8
+# define SPECIFIER 14
+# define LENGHT 6
 
 
 typedef struct			s_args
@@ -61,11 +61,10 @@ typedef struct			s_lght
 int		ft_printf(const char *format, ...);
 
 					/*PRINT*/
-void 	printf_gest(va_list ap, int pos);
-void	gest_error(va_list ap, int pos);
-void    display(void *var, t_params *params);
-void 	display_char(char *var, t_params *params);
-int		ft_print_memory(void *addr, size_t size);
+int		ft_printchar(char c, t_params *params);
+int		ft_printwchar(wchar_t *wstr, t_params *params);
+int		printnbr(int nb, t_params *params);
+int		ft_print_memory(t_params *params, void *addr);
 int		print_add(t_params *params, t_args *args, t_tabvar *var);
 int		print_integers_lenght(int lght,t_args *args, t_tabvar *var);
 
@@ -97,7 +96,7 @@ int		lenght_hh(int specifier, t_args *args, t_tabvar *var);
 int		lenght_ll(int specifier, t_args *args, t_tabvar *var);
 
 					/*CONVERT*/
-int        convert_ushctal(unsigned short nb, int size_nb);
+int     convert_ushctal(unsigned short nb, int size_nb);
 int     convert_uloctal(unsigned long long nb, int size_nb);
 int		convert_loctal(long long nb, int size_nb);
 int		convert_octal(unsigned int nb, int size_nb);
