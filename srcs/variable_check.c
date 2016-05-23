@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   variable_check.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbeline <sbeline@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:26:01 by sbeline           #+#    #+#             */
-/*   Updated: 2016/05/13 16:26:12 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/05/23 20:16:24 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int     specifier_s(t_params *params, t_args *args, t_tabvar *var)
 {
-    if (params->lenght > LENGHT)
+    if (params->lenght == LENGHT)
     {
         if ((var->var_str = va_arg(args->ap, char*)) != NULL)
 			ft_putstr(var->var_str);
@@ -29,14 +29,10 @@ int     specifier_s(t_params *params, t_args *args, t_tabvar *var)
 
 int     specifier_S(t_params *params, t_args *args, t_tabvar *var)
 {
-	if (params->lenght > LENGHT)
+	if (params->lenght == LENGHT)
 	{
 		if ((var->var_wstr = va_arg(args->ap, wchar_t *)) != NULL)
-		{
-			ft_putwstr(var->var_wstr);
-			return (ft_lenghstrwchar(var->var_wstr));
-
-		}
+			return (ft_printwchar(var->var_wstr, params));
 		else
 		{
 			ft_putstr("(null)");
@@ -48,18 +44,17 @@ int     specifier_S(t_params *params, t_args *args, t_tabvar *var)
 
 int     specifier_c(t_params *params, t_args *args, t_tabvar *var)
 {
-    if (params->lenght > LENGHT)
+    if (params->lenght == LENGHT)
     {
         var->var_c = va_arg(args->ap, int);
-        ft_putchar(var->var_c);
-		return (1);
+        return (ft_printchar(var->var_c, params));
     }
     return (-1);
 }
 
 int specifier_C(t_params *params, t_args *args, t_tabvar *var)
 {
-	if (params->lenght > LENGHT)
+	if (params->lenght == LENGHT)
 	{
 		var->var_wint = va_arg(args->ap, wint_t);
 		ft_putwchar(var->var_wint);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbeline <sbeline@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:27:41 by sbeline           #+#    #+#             */
-/*   Updated: 2016/05/13 17:43:30 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/05/23 20:09:16 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ int			to_convert(const char *str, int *pos, t_params *params)
 	*pos += 1;
 	while (str[*pos])
 	{
-		if ((flags(str, *pos, params)) > 0)
+		if ((*pos += (flags(str, *pos, params))) > 0)
 			;
-		while ((init_width(str, *pos + params->count_flags, params)) > 0)
+		while ((init_width(str, *pos, params)) > 0)
 			return (1);
 		if (str[*pos] == '.')
 		{
@@ -47,13 +47,14 @@ int			to_convert(const char *str, int *pos, t_params *params)
 				return (count_space +1);
 			}
 		}
-		params->lenght = lenght_gest(str + *pos + params->count_flags);
+		params->lenght = lenght_gest(str + *pos);
 		if (params->lenght < 4)
-			*pos += 1 + params->count_flags;
+			*pos += 1;
 		if (params->lenght == 4 || params->lenght == 5)
-			*pos += 2 + params->count_flags;
-		if ((params->specifier = specifier(str[*pos + params->count_flags])) < SPECIFIER)
-			*pos += 1 + params->count_flags;
+			*pos += 2;
+		params->specifier = specifier(str[*pos]);
+		if (params->specifier != SPECIFIER)
+			*pos += 1;
 		else
 			return (-1);
 		return (1);
@@ -63,15 +64,30 @@ int			to_convert(const char *str, int *pos, t_params *params)
 
 int 		print(const char *format, int *pos ,t_params *params)
 {
-	if (params->count_flags)
-		*pos += params->count_flags;
+	int tmp;
+
+	tmp = 0;
+	if (params->count_flags > 0)
+	{
+		tmp = params->count_flags - 1;
+		while (tmp--)
+			ft_putchar(' ');
+		return(params->count_flags - 1);
+	}
 	if (format[*pos])
 		ft_putchar(format[*pos]);
 	else
 		return(0);
+	if (params->count_flags < 0)
+	{
+		params->count_flags = -params->count_flags;
+		tmp = params->count_flags - 1;
+		while (tmp--)
+			ft_putchar(' ');
+		return(params->count_flags - 1);
+	}
 	*pos += 1;
 	return (1);
-
 }
 
 int			ft_printf(const char *format, ...)

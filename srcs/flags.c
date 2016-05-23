@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flags.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbeline <sbeline@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:26:07 by sbeline           #+#    #+#             */
-/*   Updated: 2016/05/13 17:28:53 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/05/23 19:02:45 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,22 +32,41 @@ int			specifier(char format)
 	tab[12] = 'X';
 	tab[13] = 'p';
 	i = 0;
-	while (i < SPECIFIER)
+	while(i < SPECIFIER)
 	{
 		if (format == tab[i])
 			return (i);
 		i++;
 	}
-	return (i);
+	return (SPECIFIER);
 }
 
 int			flags(const char *str, int pos, t_params *params)
 {
 	int i;
+	int count;
+	int neg;
 
+	neg = 0;
+	count = 1;
 	i = pos;
-	if (str[pos] == '0' || str[pos] == '+')
-		return (1);
+	if (str[pos] == '-')
+	{
+		neg = 1;
+		pos++;
+	}
+	if (ft_isdigit(str[pos]))
+	{
+		while (ft_isdigit(str[pos]) > 0)
+		{
+			params->count_flags = params->count_flags * count + (str[pos] - 48);
+			count = 10;
+			pos++;
+		}
+		if (neg)
+			params->count_flags = -params->count_flags;
+		return(ft_nbsize(params->count_flags));
+	}
 	while (str[i] == ' ')
 	{
 		params->count_flags++;
@@ -58,19 +77,9 @@ int			flags(const char *str, int pos, t_params *params)
 
 int			init_width(const char *str, int pos, t_params *params)
 {
-	int		tmp;
-
+	(void)params;
 	if (str[pos] == '*')
 		return (0);
-	if (ft_isdigit(str[pos]) > 0)
-	{
-		tmp = str[pos] - 48;
-		if (params->width != 0)
-			params->width = tmp + params->width * 10;
-		else
-			params->width = tmp;
-		return (1);
-	}
 	return (0);
 }
 

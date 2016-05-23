@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lenght.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbeline <sbeline@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:20:19 by sbeline           #+#    #+#             */
-/*   Updated: 2016/05/13 18:06:30 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/05/23 18:02:05 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,5 @@ int			lenght_gest(const char *str)
 			i++;
 		}
 	}
-	return (LENGHT + 1);
+	return (LENGHT);
 }

@@ -12,6 +12,7 @@ SRC_NAME = my_printf.c \
 			lenght_check.c \
 			lenght_check1.c \
 			lenght_check2.c \
+			ft_printnbr.c \
 			print_memory.c
 
 INC_PATH = ./includes/

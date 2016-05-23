@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   variable_def.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbeline <sbeline@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:27:57 by sbeline           #+#    #+#             */
-/*   Updated: 2016/05/13 17:43:31 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/05/23 18:17:23 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ static t_tab    tab[SPECIFIER]=
 	{11, specifier_spint},
 	{12, specifier_spint},
 	{13, print_add},
-    {13, specifier_slong},
 };
 
 static t_lght		lght[LENGHT]=
@@ -62,27 +61,21 @@ int        my_printf(t_params *params, t_args *args)
 {
     int     i;
 	int		j;
+	int		count;
 	t_tabvar	var;
 
-	init_var(&var);
-    i = 0;
+	i = 0;
 	j = 0;
-	if (params->lenght > LENGHT)
-	{
-    	while (tab[i].i != params->specifier && i <= SPECIFIER)
-        	i++;
-    	if (i <= SPECIFIER)
-        	return (tab[i].f(params, args, &var));
-	}
-	else
-	{
-		while (tab[i].i != params->specifier && i <= SPECIFIER)
-			i++;
-		if (i > SPECIFIER)
-			return (-1);
-		while (lght[j].j != params->lenght)
-			j++;
-		return(lght[j].f(i, args, &var));
-	}
-	return (0);
+	count = 0;
+	init_var(&var);
+	while (tab[i].i != params->specifier && i <= SPECIFIER)
+		i++;
+	if (i > SPECIFIER)
+		return (-1);
+	if (params->lenght == LENGHT)
+    	if (i < SPECIFIER)
+			return (count + tab[i].f(params, args, &var));
+	while (lght[j].j != params->lenght)
+		j++;
+	return(count + lght[j].f(i, args, &var));
 }

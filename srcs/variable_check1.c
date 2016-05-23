@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   variable_check1.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbeline <sbeline@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:27:50 by sbeline           #+#    #+#             */
-/*   Updated: 2016/05/13 16:27:53 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/05/23 18:53:53 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 
 int     specifier_integer(t_params *params, t_args *args, t_tabvar *var)
 {
-
-	if (params->lenght > LENGHT)
+	if (params->lenght == LENGHT)
 	{
     	if (params->specifier != 5 && params->specifier != 8)
     	{
         	var->var_int = va_arg(args->ap, int);
-        	ft_putnbr(var->var_int);
-			return (ft_nbsize(var->var_int));
+			return (printnbr(var->var_int, params));
+
     	}
 		else if (params->specifier == 5 || params->specifier == 8)
 		{
@@ -59,7 +58,7 @@ int     specifier_spint(t_params *params, t_args *args, t_tabvar *var)
 
 int     specifier_slong(t_params *params, t_args *args, t_tabvar *var)
 {
-    if (params->lenght > LENGHT)
+    if (params->lenght == LENGHT)
     {
 		if (params->specifier == 10)
 		{
@@ -75,8 +74,8 @@ int     specifier_slong(t_params *params, t_args *args, t_tabvar *var)
 int		print_add(t_params *params, t_args *args, t_tabvar *var)
 {
 	void 	*p;
-	(void)params;
+
 	(void)var;
 	p = va_arg(args->ap, void *);
-	return (ft_print_memory(p, sizeof(&p)));
+	return (ft_print_memory(params ,p));
 }
