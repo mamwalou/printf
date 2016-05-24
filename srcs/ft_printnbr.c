@@ -6,7 +6,7 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/23 17:09:02 by sbeline           #+#    #+#             */
-/*   Updated: 2016/05/23 20:22:39 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/05/24 16:09:26 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,18 @@ int		printnbr(int nb, t_params *params)
 
 	if (params->count_flags)
 	{
-		count = params->count_flags - ft_nbsize(nb);
-		if (count < 0)
+		if (params->count_flags < 0)
 		{
+			params->count_flags = -params->count_flags;
+			count = params->count_flags - ft_nbsize(nb);
 			ft_putnbr(nb);
-			return (ft_nbsize(nb));
+			if (count < 0)
+				return (ft_nbsize(nb));
+			while (count--)
+				ft_putchar(' ');
+			return (params->count_flags);
 		}
+		count = params->count_flags - ft_nbsize(nb);
 		while (count--)
 			ft_putchar(' ');
 		ft_putnbr(nb);
@@ -60,18 +66,19 @@ int		ft_printwchar(wchar_t *wstr, t_params *params)
 {
 	int count;
 
+	count = 0;
 	if (params->count_flags)
 	{
-		count = params->count_flags - ft_lenghstrwchar(wstr);
 		if (params->count_flags < 0)
 		{
-			count = params->count_flags;
 			params->count_flags = -params->count_flags;
+			count = params->count_flags - ft_lenghstrwchar(wstr);
 			ft_putwstr(wstr);
-			while (count++)
+			while (count--)
 				ft_putchar(' ');
 			return (params->count_flags);
 		}
+		count = params->count_flags - ft_lenghstrwchar(wstr);
 		while (count--)
 			ft_putchar(' ');
 		ft_putwstr(wstr);
