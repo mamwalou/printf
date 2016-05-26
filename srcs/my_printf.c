@@ -6,7 +6,7 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:27:41 by sbeline           #+#    #+#             */
-/*   Updated: 2016/05/23 20:09:16 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/05/26 19:48:56 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void		init_parm(t_params *params)
 	params->specifier = 0;
 	params->count_flags = 0;
 	params->flags = 0;
+	params->neg = 0;
 
 }
 
@@ -34,8 +35,7 @@ int			to_convert(const char *str, int *pos, t_params *params)
 	*pos += 1;
 	while (str[*pos])
 	{
-		if ((*pos += (flags(str, *pos, params))) > 0)
-			;
+		*pos += (flags(str, *pos, params));
 		while ((init_width(str, *pos, params)) > 0)
 			return (1);
 		if (str[*pos] == '.')
@@ -64,30 +64,24 @@ int			to_convert(const char *str, int *pos, t_params *params)
 
 int 		print(const char *format, int *pos ,t_params *params)
 {
-	int tmp;
+	int ret;
 
-	tmp = 0;
-	if (params->count_flags > 0)
+	ret = 0;
+	if (!params->count_flags)
 	{
-		tmp = params->count_flags - 1;
-		while (tmp--)
-			ft_putchar(' ');
-		return(params->count_flags - 1);
-	}
-	if (format[*pos])
 		ft_putchar(format[*pos]);
-	else
-		return(0);
-	if (params->count_flags < 0)
-	{
-		params->count_flags = -params->count_flags;
-		tmp = params->count_flags - 1;
-		while (tmp--)
-			ft_putchar(' ');
-		return(params->count_flags - 1);
+		*pos += 1;
+		return (1);
 	}
+	if (!params->neg)
+		ret = flags_print(params, 1);
+	ft_putchar(format[*pos]);
 	*pos += 1;
-	return (1);
+	if (params->neg)
+		ret = flags_print(params, 1);
+
+	return (ret);
+
 }
 
 int			ft_printf(const char *format, ...)

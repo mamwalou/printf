@@ -6,7 +6,7 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:20:50 by sbeline           #+#    #+#             */
-/*   Updated: 2016/05/23 19:32:03 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/05/26 17:11:36 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,36 +34,22 @@ int			ft_print_memory(t_params *params, void *addr)
 {
 	size_t ptr_to_print;
 	int ret;
-	int count;
+	int tmp;
 
-	ret = 2;
+	tmp = 2;
 	ptr_to_print = (size_t)addr;
-	ret += cthex(ptr_to_print, "0123456789abcdef");
-	if (params->count_flags > 0)
+	tmp += cthex(ptr_to_print, "0123456789abcdef");
+	if (tmp > params->count_flags)
 	{
-		count = params->count_flags - ret;
-		if (count < 0)
-		{
-			printhex(ptr_to_print, "0123456789abcdef");
-			return (ret);
-		}
-		while (count--)
-			ft_putchar(' ');
 		ft_putstr("0x");
 		printhex(ptr_to_print, "0123456789abcdef");
-		return (params->count_flags);
+		return (tmp);
 	}
+	if (!params->neg)
+		ret = flags_print(params, tmp);
 	ft_putstr("0x");
 	printhex(ptr_to_print, "0123456789abcdef");
-	if (params->count_flags < 0)
-	{
-		params->count_flags = -params->count_flags;
-		count = params->count_flags - ret;
-		if (count < 0)
-			return (ret);
-		while (count-- != 0)
-			ft_putchar(' ');
-		return(params->count_flags);
-	}
+	if (params->neg)
+		ret = flags_print(params, tmp);
 	return (ret);
 }

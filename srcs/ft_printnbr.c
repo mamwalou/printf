@@ -6,7 +6,7 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/23 17:09:02 by sbeline           #+#    #+#             */
-/*   Updated: 2016/05/24 16:09:26 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/05/26 17:41:02 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,77 +14,55 @@
 
 int		printnbr(int nb, t_params *params)
 {
-	int count;
+	int ret;
 
-	if (params->count_flags)
+	ret = 0;
+	if ((int)ft_nbsize(nb) > params->count_flags)
 	{
-		if (params->count_flags < 0)
-		{
-			params->count_flags = -params->count_flags;
-			count = params->count_flags - ft_nbsize(nb);
-			ft_putnbr(nb);
-			if (count < 0)
-				return (ft_nbsize(nb));
-			while (count--)
-				ft_putchar(' ');
-			return (params->count_flags);
-		}
-		count = params->count_flags - ft_nbsize(nb);
-		while (count--)
-			ft_putchar(' ');
 		ft_putnbr(nb);
-		return (params->count_flags);
+		return (ft_nbsize(nb));
 	}
-	else
-		ft_putnbr(nb);
-	return (ft_nbsize(nb));
+	if (!params->neg)
+		ret = flags_print(params, ft_nbsize(nb));
+	ft_putnbr(nb);
+	if (params->neg)
+		ret = flags_print(params, ft_nbsize(nb));
+	return (ret);
 }
 
 int		ft_printchar(char c, t_params *params)
 {
-	int count;
+	int ret;
 
-	if (params->count_flags)
+	ret = 0;
+	if (!params->count_flags)
 	{
-		count = params->count_flags - 1;
-		if (count < 0)
-		{
-			ft_putchar(c);
-			return (1);
-		}
-		while (count--)
-			ft_putchar(' ');
 		ft_putchar(c);
-		return (params->count_flags);
+		return (1);
 	}
-	else
-		ft_putchar(c);
-	return (1);
+	if (!params->neg)
+		ret = flags_print(params, 1);
+	ft_putchar(c);
+	if (params->neg)
+		ret = flags_print(params, 1);
+	return (ret);
 }
+
 
 int		ft_printwchar(wchar_t *wstr, t_params *params)
 {
-	int count;
+	int ret;
 
-	count = 0;
-	if (params->count_flags)
+	ret = 0;
+	if (ft_lenghstrwchar(wstr) > params->count_flags)
 	{
-		if (params->count_flags < 0)
-		{
-			params->count_flags = -params->count_flags;
-			count = params->count_flags - ft_lenghstrwchar(wstr);
-			ft_putwstr(wstr);
-			while (count--)
-				ft_putchar(' ');
-			return (params->count_flags);
-		}
-		count = params->count_flags - ft_lenghstrwchar(wstr);
-		while (count--)
-			ft_putchar(' ');
 		ft_putwstr(wstr);
-		return (params->count_flags);
+		return (ft_lenghstrwchar(wstr));
 	}
-	else
-		ft_putwstr(wstr);
-	return (ft_lenghstrwchar(wstr));
+	if (!params->neg)
+		ret = flags_print(params,ft_lenghstrwchar(wstr));
+	ft_putwstr(wstr);
+	if (params->neg)
+		ret = flags_print(params, ft_lenghstrwchar(wstr));
+	return (ret);
 }

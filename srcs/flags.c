@@ -6,7 +6,7 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:26:07 by sbeline           #+#    #+#             */
-/*   Updated: 2016/05/23 19:02:45 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/05/26 19:51:48 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,62 +41,46 @@ int			specifier(char format)
 	return (SPECIFIER);
 }
 
+int			define_width(const char *str, int pos, t_params *params)
+{
+	if (str[pos] == 0)
+	{
+		params->flags = '0';
+		return (1);
+	}
+	else
+		params->flags = ' ';
+	return (0);
+}
+
 int			flags(const char *str, int pos, t_params *params)
 {
-	int i;
 	int count;
-	int neg;
+	int ret;
 
-	neg = 0;
-	count = 1;
-	i = pos;
+	count = 0;
+	pos += define_width(str, pos, params);
 	if (str[pos] == '-')
 	{
-		neg = 1;
+		params->neg = 1;
 		pos++;
 	}
 	if (ft_isdigit(str[pos]))
 	{
+		ret = 0;
 		while (ft_isdigit(str[pos]) > 0)
 		{
 			params->count_flags = params->count_flags * count + (str[pos] - 48);
 			count = 10;
+			ret++;
 			pos++;
 		}
-		if (neg)
-			params->count_flags = -params->count_flags;
-		return(ft_nbsize(params->count_flags));
+		return (ret + params->neg);
 	}
-	while (str[i] == ' ')
+	while (str[pos] == ' ')
 	{
 		params->count_flags++;
-		i++;
+		pos++;
 	}
 	return (params->count_flags);
-}
-
-int			init_width(const char *str, int pos, t_params *params)
-{
-	(void)params;
-	if (str[pos] == '*')
-		return (0);
-	return (0);
-}
-
-int			get_precision(const char *str, int pos, t_params *params)
-{
-	int		tmp;
-
-	if (str[pos] == '*')
-		return (0);
-	if (ft_isdigit(str[pos]) > 0)
-	{
-		tmp = str[pos] - 48;
-		if (params->precision != 0)
-			params->precision = tmp + params->precision * 10;
-		else
-			params->precision = tmp;
-		return (1);
-	}
-	return (0);
 }
