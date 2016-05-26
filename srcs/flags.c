@@ -6,7 +6,7 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:26:07 by sbeline           #+#    #+#             */
-/*   Updated: 2016/05/26 19:51:48 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/05/26 20:36:40 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,8 @@ int			specifier(char format)
 
 int			define_width(const char *str, int pos, t_params *params)
 {
-	if (str[pos] == 0)
-	{
+	if (str[pos] == '0')
 		params->flags = '0';
-		return (1);
-	}
 	else
 		params->flags = ' ';
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/23 17:09:02 by sbeline           #+#    #+#             */
-/*   Updated: 2016/05/26 17:41:02 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/05/26 20:38:04 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,13 @@
 int		printnbr(int nb, t_params *params)
 {
 	int ret;
+	int is_neg;
 
 	ret = 0;
+	if (nb < 0)
+	{
+		is_neg = 1;
+	}
 	if ((int)ft_nbsize(nb) > params->count_flags)
 	{
 		ft_putnbr(nb);
