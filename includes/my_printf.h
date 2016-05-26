@@ -23,10 +23,11 @@ typedef struct			s_params
 {
 	int					width;
 	int					precision;
-	int					flags;
 	int					lenght;
 	int					specifier;
 	int					count_flags;
+	int					flags;
+	int					neg;
 }						t_params;
 
 typedef struct			s_tabvar
@@ -67,6 +68,7 @@ int		printnbr(int nb, t_params *params);
 int		ft_print_memory(t_params *params, void *addr);
 int		print_add(t_params *params, t_args *args, t_tabvar *var);
 int		print_integers_lenght(int lght,t_args *args, t_tabvar *var);
+int		flags_print(t_params *params, int ref);
 
 					/*PARSING */
 int 	flags(const char *str, int pos, t_params *params);
