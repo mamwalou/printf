@@ -6,7 +6,7 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:27:50 by sbeline           #+#    #+#             */
-/*   Updated: 2016/05/23 18:53:53 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/05/27 22:30:33 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,7 @@ int     specifier_integer(t_params *params, t_args *args, t_tabvar *var)
 				return (ft_lenghtlong(var->var_longlong));
 			}
 			else if (params->specifier == 8)
-			{
-				return(convert_loctal(var->var_longlong,
-					 ft_lenghtlong(var->var_longlong)));
-			}
+				return(con_loctal(var->var_longlong, params));
 		}
 	}
 	return (-1);
@@ -44,11 +41,11 @@ int     specifier_spint(t_params *params, t_args *args, t_tabvar *var)
 {
     var->var_unsint = (unsigned)va_arg(args->ap, int);
     if (params->specifier == 7)
-        return (convert_octal(var->var_unsint, ft_strnb(&var->var_unsint)));
+        return (con_octal(var->var_unsint, params));
     else if (params->specifier == 11)
-        return (convert_hx(var->var_unsint, ft_strnb(&var->var_unsint), 0));
+        return (con_hx(var->var_unsint, 0, params));
 	else if (params->specifier == 12)
-		return (convert_hx(var->var_unsint, ft_strnb(&var->var_unsint), 1));
+		return (con_hx(var->var_unsint, 1, params));
     else if (params->specifier == 9)
 		ft_printunint(var->var_unsint);
 	if (var->var_unsint == 0)

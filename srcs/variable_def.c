@@ -6,7 +6,7 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:27:57 by sbeline           #+#    #+#             */
-/*   Updated: 2016/05/23 18:17:23 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/05/27 17:59:17 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,5 @@ int        my_printf(t_params *params, t_args *args)
 			return (count + tab[i].f(params, args, &var));
 	while (lght[j].j != params->lenght)
 		j++;
-	return(count + lght[j].f(i, args, &var));
+	return(count + lght[j].f(i, args, &var, params));
 }

@@ -6,7 +6,7 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:26:01 by sbeline           #+#    #+#             */
-/*   Updated: 2016/05/23 20:16:24 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/05/27 19:39:10 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int     specifier_s(t_params *params, t_args *args, t_tabvar *var)
     if (params->lenght == LENGHT)
     {
         if ((var->var_str = va_arg(args->ap, char*)) != NULL)
-			ft_putstr(var->var_str);
+			return (ft_printstr(var->var_str, params));
 		else
 		{
 			ft_putstr("(null)");

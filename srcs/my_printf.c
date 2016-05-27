@@ -6,7 +6,7 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:27:41 by sbeline           #+#    #+#             */
-/*   Updated: 2016/05/26 20:17:02 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/05/27 20:59:56 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,13 @@ int			to_convert(const char *str, int *pos, t_params *params)
 
 	init_parm(params);
 	count_space = 0;
-	if (str[*pos] != '%')
+	if (str[*pos] != '%' && str[*pos])
 		return (-1);
 	*pos += 1;
 	while (str[*pos])
 	{
-		*pos += (flags(str, *pos, params));
-		while ((init_width(str, *pos, params)) > 0)
-			return (1);
+		*pos += flags(str, *pos, params);
+		*pos += init_width(str, *pos, params);
 		if (str[*pos] == '.')
 		{
 			*pos += 1;
@@ -67,6 +66,8 @@ int 		print(const char *format, int *pos ,t_params *params)
 	int ret;
 
 	ret = 0;
+	if (!format[*pos])
+		return (0);
 	if (!params->count_flags)
 	{
 		ft_putchar(format[*pos]);
