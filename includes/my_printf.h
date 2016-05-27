@@ -56,19 +56,24 @@ typedef struct			s_tab
 typedef struct			s_lght
 {
 	int					j;
-	int					(*f)(int , t_args *,t_tabvar *);
+	int					(*f)(int , t_args *,t_tabvar *, t_params *);
 }						t_lght;
 
 int		ft_printf(const char *format, ...);
 
 					/*PRINT*/
 int		ft_printchar(char c, t_params *params);
+int		ft_printstr(char *str, t_params *params);
 int		ft_printwchar(wchar_t *wstr, t_params *params);
 int		printnbr(int nb, t_params *params);
 int		ft_print_memory(t_params *params, void *addr);
 int		print_add(t_params *params, t_args *args, t_tabvar *var);
 int		print_integers_lenght(int lght,t_args *args, t_tabvar *var);
 int		flags_print(t_params *params, int ref);
+int		sharp_printhx(int nb, int maj, int tmp);
+int		sharp_printoc(int nb, int tmp);
+int		space_printoc(t_params *params, int tmp, int nb);
+int		space_printhx(t_params *params, int tmp, int nb, int maj);
 
 					/*PARSING */
 int 	flags(const char *str, int pos, t_params *params);
@@ -88,21 +93,26 @@ int     specifier_integer(t_params *params, t_args *args, t_tabvar *var);
 int     specifier_spint(t_params *params, t_args *args, t_tabvar *var);
 int     specifier_slong(t_params *params, t_args *args, t_tabvar *var);
 
-int		lenght_T(int specifier, t_args *args, t_tabvar *var);
-int		lenght_h(int specifier, t_args *args, t_tabvar *var);
-int		lenght_l(int specifier, t_args *args, t_tabvar *var);
-int		lenght_L(int specifier, t_args *args, t_tabvar *var);
-int		lenght_j(int specifier, t_args *args, t_tabvar *var);
-int		lenght_z(int specifier, t_args *args, t_tabvar *var);
-int		lenght_hh(int specifier, t_args *args, t_tabvar *var);
-int		lenght_ll(int specifier, t_args *args, t_tabvar *var);
+int		lenght_T(int spe, t_args *args, t_tabvar *var, t_params *params);
+int		lenght_h(int spe, t_args *args, t_tabvar *var, t_params *params);
+int		lenght_l(int spe, t_args *args, t_tabvar *var, t_params *params);
+int		lenght_L(int spe, t_args *args, t_tabvar *var, t_params *params);
+int		lenght_j(int spe, t_args *args, t_tabvar *var, t_params *params);
+int		lenght_z(int spe, t_args *args, t_tabvar *var, t_params *params);
+int		lenght_hh(int spe, t_args *args, t_tabvar *var, t_params *params);
+int		lenght_ll(int spe, t_args *args, t_tabvar *var, t_params *params);
 
-					/*CONVERT*/
-int     convert_ushctal(unsigned short nb, int size_nb);
-int     convert_uloctal(unsigned long long nb, int size_nb);
-int		convert_loctal(long long nb, int size_nb);
-int		convert_octal(unsigned int nb, int size_nb);
-int		convert_hx(unsigned int nb, int size_nb, int maj);
-int   	convert_unlhx(unsigned long long nb, int size_nb, int maj);
+					/*con*/
+void	printhex(size_t nb, char *base);
+void	printoctal(size_t nb, char *base);
+int 	cthex(size_t nb, char *base);
+int 	ctoctal(size_t nb, char *base);
+int     con_ushctal(unsigned short nb, t_params *params);
+int     con_uloctal(unsigned long long nb, t_params *params);
+int		con_loctal(long long nb, t_params *params);
+int		con_octal(unsigned int nb, t_params *params);
+int		con_hx(unsigned int nb, int maj, t_params *params);
+int   	con_unlhx(unsigned long long nb, int maj, t_params *p);
+
 
 #endif
