@@ -4,7 +4,6 @@ NAMEA = libftprintf.a
 
 SRC_NAME = my_printf.c \
 			flags.c \
-			convert.c \
 			variable_check.c \
 			variable_check1.c \
 			variable_def.c \
@@ -15,6 +14,9 @@ SRC_NAME = my_printf.c \
 			ft_printnbr.c \
 			width_precision.c \
 			flags_print.c \
+			convert_octal.c \
+			convert_hex.c \
+			ft_printstr.c \
 			print_memory.c
 
 INC_PATH = ./includes/
