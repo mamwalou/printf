@@ -6,7 +6,7 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/26 15:38:35 by sbeline           #+#    #+#             */
-/*   Updated: 2016/05/27 21:23:31 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/05/29 14:38:59 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@ int			init_width(const char *str, int pos, t_params *params)
 	if (str[pos] == '#')
 	{
 		params->flags = '#';
+		params->count_flags = 1;
+		return (1);
+	}
+	if (str[pos] == '+')
+	{
+		params->flags = '+';
 		params->count_flags = 1;
 		return (1);
 	}

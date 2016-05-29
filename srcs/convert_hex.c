@@ -6,7 +6,7 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/27 17:41:09 by sbeline           #+#    #+#             */
-/*   Updated: 2016/05/27 22:58:28 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/05/29 15:43:00 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ int				con_hx(unsigned int nb, int maj, t_params *params)
 	tmp += cthex(nb, "0123456789abcdef");
 	if (params->flags == '#')
 		return (sharp_printhx(nb, maj, tmp));
-
 	if (tmp > params->count_flags)
 	{
 		if (!maj)

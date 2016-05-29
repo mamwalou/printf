@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printnbr.c                                      :+:      :+:    :+:   */
+/*   flags_print2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/23 17:09:02 by sbeline           #+#    #+#             */
-/*   Updated: 2016/05/29 16:12:31 by sbeline          ###   ########.fr       */
+/*   Created: 2016/05/29 15:44:22 by sbeline           #+#    #+#             */
+/*   Updated: 2016/05/29 16:15:08 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/my_printf.h"
 
-int		printnbr(int nb, t_params *params)
+int		space_print(t_params *params, int nb)
 {
+	int is_neg;
 	int ret;
 
 	ret = 0;
-	if (params->flags == '+' && nb > 0)
+	is_neg = 0;
+	if (!params->neg)
 	{
-		ft_putchar('+');
-		ret++;
+		if (nb < 0 && params->flags == '0')
+		{
+			nb = -nb;
+			is_neg++;
+			ft_putchar('-');
+		}
+		ret = flags_print(params, ft_nbsize(nb) + is_neg);
 	}
-	if ((int)ft_nbsize(nb) > params->count_flags)
-	{
-		ft_putnbr(nb);
-		return (ft_nbsize(nb) + ret);
-	}
-	if (params->flags == '0' || params->flags == ' ')
-		return (space_print(params, nb) + ret);
-	return (0);
+	ft_putnbr(nb);
+	if (params->neg)
+		ret = flags_print(params, ft_nbsize(nb) + is_neg);
+	return (ret);
 }
