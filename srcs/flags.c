@@ -6,7 +6,7 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:26:07 by sbeline           #+#    #+#             */
-/*   Updated: 2016/05/27 20:54:20 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/05/30 19:49:09 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,23 @@ int			flags(const char *str, int pos, t_params *params)
 		}
 		return (ret + params->neg);
 	}
-	while (str[pos] == ' ')
+	return (0);
+}
+
+int			space(const char *str, int pos, t_params *params)
+{
+	int tmp;
+
+	tmp = 0;
+	if (str[pos] == ' ')
 	{
+		while (str[pos] == ' ')
+		{
+			pos++;
+			tmp++;
+		}
+		params->flags = 't';
 		params->count_flags++;
-		pos++;
 	}
-	return (params->count_flags);
+	return (tmp);
 }

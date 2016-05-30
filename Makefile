@@ -14,6 +14,7 @@ SRC_NAME = my_printf.c \
 			ft_printnbr.c \
 			width_precision.c \
 			flags_print.c \
+			flags_print2.c \
 			convert_octal.c \
 			convert_hex.c \
 			ft_printstr.c \

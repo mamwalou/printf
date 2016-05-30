@@ -6,7 +6,7 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/27 17:40:49 by sbeline           #+#    #+#             */
-/*   Updated: 2016/05/29 16:25:49 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/05/30 16:22:37 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ int			con_uloctal(unsigned long long nb, t_params *params)
 		printoctal(nb, "012345678");
 		return (tmp);
 	}
-
+	if (params->flags == '0' || params->flags == ' ')
+		return (space_printoc(params, tmp, nb));
 	return (ret);
 }
 
@@ -69,7 +70,7 @@ int				con_loctal(long long nb, t_params *params)
 		ft_putnbr(0);
 		return (1);
 	}
-	if (tmp > params->count_flags)
+	if (tmp >= params->count_flags)
 	{
 		printoctal(nb, "012345678");
 		return (tmp);
@@ -94,7 +95,7 @@ int				con_octal(unsigned int nb, t_params *params)
 		ft_putnbr(0);
 		return (1);
 	}
-	if (tmp > params->count_flags)
+	if (tmp >= params->count_flags)
 	{
 		printoctal(nb, "012345678");
 		return (tmp);

@@ -6,7 +6,7 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/26 15:57:28 by sbeline           #+#    #+#             */
-/*   Updated: 2016/05/27 22:57:14 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/05/30 17:03:10 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,14 @@ int		flags_print(t_params *params, int ref)
 {
 	int diff;
 
+	diff = 0;
+	if (params->flags == 't')
+	{
+		diff = params->count_flags;
+		while (params->count_flags--)
+			ft_putchar(' ');
+		return (diff + ref);
+	}
 	diff = params->count_flags - ref;
 	while (diff--)
 		ft_putchar(params->flags);

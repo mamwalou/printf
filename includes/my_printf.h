@@ -70,6 +70,7 @@ int		ft_print_memory(t_params *params, void *addr);
 int		print_add(t_params *params, t_args *args, t_tabvar *var);
 int		print_integers_lenght(int lght,t_args *args, t_tabvar *var);
 int		flags_print(t_params *params, int ref);
+int		space_print(t_params *params, int nb);
 int		sharp_printhx(int nb, int maj, int tmp);
 int		sharp_printoc(int nb, int tmp);
 int		space_printoc(t_params *params, int tmp, int nb);
@@ -81,6 +82,8 @@ int		init_width(const char *str, int pos, t_params *params);
 int		get_precision(const char *str, int pos, t_params *params);
 int 	lenght_gest(const char *str);
 int		specifier(char format);
+int		space(const char *str, int pos, t_params *params);
+
 
 					/*DEFINE VARIABLE USE*/
 int		my_printf(t_params *params, t_args *args);

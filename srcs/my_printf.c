@@ -6,7 +6,7 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:27:41 by sbeline           #+#    #+#             */
-/*   Updated: 2016/05/27 20:59:56 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/05/30 20:07:25 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,30 @@ static void		init_parm(t_params *params)
 
 }
 
+int			gest_flag(int pos, const char *str, t_params *params)
+{
+	int ret;
+
+	ret = pos;
+	ret += flags(str, pos, params);
+	ret += init_width(str, pos, params);
+	ret += space(str, pos, params);
+	if (ret > pos)
+		gest_flag(ret, str, params);
+	return (ret);
+}
+
 int			to_convert(const char *str, int *pos, t_params *params)
 {
 	int count_space;
 
-	init_parm(params);
 	count_space = 0;
 	if (str[*pos] != '%' && str[*pos])
 		return (-1);
 	*pos += 1;
 	while (str[*pos])
 	{
-		*pos += flags(str, *pos, params);
-		*pos += init_width(str, *pos, params);
+		*pos = gest_flag(*pos, str, params);
 		if (str[*pos] == '.')
 		{
 			*pos += 1;
@@ -68,20 +79,19 @@ int 		print(const char *format, int *pos ,t_params *params)
 	ret = 0;
 	if (!format[*pos])
 		return (0);
-	if (!params->count_flags)
+	if (!params->count_flags || params->flags == 't')
 	{
 		ft_putchar(format[*pos]);
 		*pos += 1;
 		return (1);
 	}
-	if (!params->neg)
-		ret = flags_print(params, 1);
+	ret = params->count_flags - 1;
+	if (params->specifier == SPECIFIER && params->flags != 't')
+		while (ret--)
+			ft_putchar(' ');
 	ft_putchar(format[*pos]);
 	*pos += 1;
-	if (params->neg)
-		ret = flags_print(params, 1);
-
-	return (ret);
+	return (params->count_flags);
 
 }
 
@@ -98,6 +108,7 @@ int			ft_printf(const char *format, ...)
 
 	while (format[i])
 	{
+		init_parm(&params);
 		if ((to_convert(format, &i, &params)) > 0)
 			ret += my_printf(&params, &args);
 		else
