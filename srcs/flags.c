@@ -6,7 +6,7 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:26:07 by sbeline           #+#    #+#             */
-/*   Updated: 2016/05/30 19:49:09 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/06/09 21:28:04 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ int			specifier(char format)
 
 int			define_width(const char *str, int pos, t_params *params)
 {
-	if (str[pos] == '0')
+	if (str[pos] == '0' && !params->flags)
 		params->flags = '0';
-	else
+	else if (!params->flags)
 		params->flags = ' ';
 	return (0);
 }
@@ -89,7 +89,7 @@ int			space(const char *str, int pos, t_params *params)
 			pos++;
 			tmp++;
 		}
-		params->flags = 't';
+
 		params->count_flags++;
 	}
 	return (tmp);

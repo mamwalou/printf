@@ -6,7 +6,7 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/23 17:09:02 by sbeline           #+#    #+#             */
-/*   Updated: 2016/05/30 19:22:57 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/06/09 16:48:38 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ int		printnbr(int nb, t_params *params)
 		ft_putchar('+');
 		ret++;
 	}
-	if ((((int)ft_nbsize(nb) > params->count_flags) && (params->flags != 't'))
-		|| (nb < 0))
+	if ((((int)ft_nbsize(nb) > params->count_flags) && (params->flags != 't')))
 	{
 		ft_putnbr(nb);
 		return (ft_nbsize(nb) + ret);

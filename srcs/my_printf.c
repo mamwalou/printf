@@ -6,7 +6,7 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:27:41 by sbeline           #+#    #+#             */
-/*   Updated: 2016/05/30 20:07:25 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/06/09 21:27:59 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,10 @@ int			gest_flag(int pos, const char *str, t_params *params)
 	int ret;
 
 	ret = pos;
-	ret += flags(str, pos, params);
 	ret += init_width(str, pos, params);
+	ret += flags(str, pos, params);
 	ret += space(str, pos, params);
+	//ret += define_width(str, pos, params);
 	if (ret > pos)
 		gest_flag(ret, str, params);
 	return (ret);
@@ -86,10 +87,16 @@ int 		print(const char *format, int *pos ,t_params *params)
 		return (1);
 	}
 	ret = params->count_flags - 1;
-	if (params->specifier == SPECIFIER && params->flags != 't')
+	ft_putchar(params->flags);
+	if (params->specifier == SPECIFIER && params->flags != 't' && !params->neg)
 		while (ret--)
+		{
 			ft_putchar(' ');
+		}
 	ft_putchar(format[*pos]);
+	if (params->specifier == SPECIFIER && params->flags != 't' && params->neg)
+		while (ret--)
+		ft_putchar(' ');
 	*pos += 1;
 	return (params->count_flags);
 
