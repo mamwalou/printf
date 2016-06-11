@@ -6,7 +6,7 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:26:07 by sbeline           #+#    #+#             */
-/*   Updated: 2016/06/09 21:28:04 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/06/11 18:21:23 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,24 @@ int			specifier(char format)
 
 int			define_width(const char *str, int pos, t_params *params)
 {
+	int ret;
+
+	ret = 0;
 	if (str[pos] == '0' && !params->flags)
 		params->flags = '0';
+	if (str[pos] == '-')
+	{
+		params->neg = 1;
+		ret++;
+	}
+	else if (str[pos] == '+')
+	{
+		params->pos = 1;
+		ret++;
+	}
 	else if (!params->flags)
 		params->flags = ' ';
-	return (0);
+	return (ret);
 }
 
 int			flags(const char *str, int pos, t_params *params)
@@ -55,13 +68,9 @@ int			flags(const char *str, int pos, t_params *params)
 	int count;
 	int ret;
 
-	count = 0;
 	pos += define_width(str, pos, params);
-	if (str[pos] == '-')
-	{
-		params->neg = 1;
-		pos++;
-	}
+	if (params->count_flags)
+		return (0);
 	if (ft_isdigit(str[pos]))
 	{
 		ret = 0;
@@ -72,7 +81,12 @@ int			flags(const char *str, int pos, t_params *params)
 			ret++;
 			pos++;
 		}
-		return (ret + params->neg);
+		return (ret + params->neg + params->pos);
+	}
+	else
+	{
+		params->neg = 0;
+		params->pos = 0;
 	}
 	return (0);
 }
@@ -89,7 +103,7 @@ int			space(const char *str, int pos, t_params *params)
 			pos++;
 			tmp++;
 		}
-
+		params->flags = 't';
 		params->count_flags++;
 	}
 	return (tmp);

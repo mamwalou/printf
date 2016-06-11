@@ -6,7 +6,7 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/26 15:57:28 by sbeline           #+#    #+#             */
-/*   Updated: 2016/05/30 17:03:10 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/06/11 17:14:49 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,16 @@ int		sharp_printhx(int nb, int maj, int tmp)
 {
 	if (nb > 0)
 	{
-		ft_putstr("0x");
 		if (!maj)
+		{
+			ft_putstr("0x");
 			printhex(nb, "0123456789abcdef");
+		}
 		else
+		{
+			ft_putstr("0X");
 			printhex(nb, "0123456789ABCDEF");
+		}
 		return (tmp + 2);
 	}
 	ft_putchar('0');

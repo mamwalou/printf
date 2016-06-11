@@ -6,7 +6,7 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/29 15:44:22 by sbeline           #+#    #+#             */
-/*   Updated: 2016/05/30 17:29:09 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/06/11 16:25:38 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		space_print(t_params *params, int nb)
 
 	ret = 0;
 	is_neg = 0;
-	if (!params->neg)
+	if ((!params->neg) && (nb > 0 || params->flags != 't'))
 	{
 		if (nb < 0 && params->flags == '0')
 		{
@@ -32,5 +32,7 @@ int		space_print(t_params *params, int nb)
 	ft_putnbr(nb);
 	if (params->neg)
 		ret = flags_print(params, ft_nbsize(nb) + is_neg);
+	if (ret == 0 && nb != 0)
+		return (ft_nbsize(nb));
 	return (ret);
 }

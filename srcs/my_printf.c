@@ -6,7 +6,7 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:27:41 by sbeline           #+#    #+#             */
-/*   Updated: 2016/06/09 21:27:59 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/06/11 18:27:30 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ static void		init_parm(t_params *params)
 	params->count_flags = 0;
 	params->flags = 0;
 	params->neg = 0;
+	params->pos = 0;
+	params->neg_nb = 0;
+	params->pos_nb = 0;
 
 }
 
@@ -29,12 +32,29 @@ int			gest_flag(int pos, const char *str, t_params *params)
 	int ret;
 
 	ret = pos;
+	ft_putstr("ret_begin=");
+	ft_putendl(str + ret);
+	ft_putstr("ret_before=");
+	ft_putnbr(ret);
+	ft_putchar('\n');
 	ret += init_width(str, pos, params);
+	ft_putstr("ret_width=");
+	ft_putnbr(ret);
+	ft_putchar('\n');
 	ret += flags(str, pos, params);
+	ft_putstr("ret_flags=");
+	ft_putnbr(ret);
+	ft_putchar('\n');
 	ret += space(str, pos, params);
-	//ret += define_width(str, pos, params);
+	ft_putstr("ret_space=");
+	ft_putnbr(ret);
+	ft_putchar('\n');
+	ft_putstr("ret=");
+	ft_putendl(str + ret);
 	if (ret > pos)
 		gest_flag(ret, str, params);
+	ft_putstr("ret_last=");
+	ft_putendl(str + ret);
 	return (ret);
 }
 
@@ -87,7 +107,6 @@ int 		print(const char *format, int *pos ,t_params *params)
 		return (1);
 	}
 	ret = params->count_flags - 1;
-	ft_putchar(params->flags);
 	if (params->specifier == SPECIFIER && params->flags != 't' && !params->neg)
 		while (ret--)
 		{
