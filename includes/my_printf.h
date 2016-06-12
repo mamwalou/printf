@@ -26,8 +26,13 @@ typedef struct			s_params
 	int					lenght;
 	int					specifier;
 	int					count_flags;
+	int					count_tflags;
 	int					flags;
 	int					neg;
+	int					pos;
+	int					pos_nb;
+	int					neg_nb;
+	int					tflags;
 }						t_params;
 
 typedef struct			s_tabvar
