@@ -94,21 +94,21 @@ int		space(const char *str, int pos, t_params *params);
 int		my_printf(t_params *params, t_args *args);
 int		specifier_integer(t_params *params, t_args *args, t_tabvar *var);
 int     specifier_s(t_params *params, t_args *args, t_tabvar *var);
-int     specifier_S(t_params *params, t_args *args, t_tabvar *var);
+int     specifier_ss(t_params *params, t_args *args, t_tabvar *var);
 int     specifier_c(t_params *params, t_args *args, t_tabvar *var);
-int		specifier_C(t_params *params, t_args *args, t_tabvar *var);
+int		specifier_cc(t_params *params, t_args *args, t_tabvar *var);
 int     specifier_integer(t_params *params, t_args *args, t_tabvar *var);
 int     specifier_spint(t_params *params, t_args *args, t_tabvar *var);
 int     specifier_slong(t_params *params, t_args *args, t_tabvar *var);
 
-int		lenght_T(int spe, t_args *args, t_tabvar *var, t_params *params);
-int		lenght_h(int spe, t_args *args, t_tabvar *var, t_params *params);
-int		lenght_l(int spe, t_args *args, t_tabvar *var, t_params *params);
-int		lenght_L(int spe, t_args *args, t_tabvar *var, t_params *params);
-int		lenght_j(int spe, t_args *args, t_tabvar *var, t_params *params);
-int		lenght_z(int spe, t_args *args, t_tabvar *var, t_params *params);
-int		lenght_hh(int spe, t_args *args, t_tabvar *var, t_params *params);
-int		lenght_ll(int spe, t_args *args, t_tabvar *var, t_params *params);
+int		lenght_T(int sp, t_args *args, t_tabvar *var, t_params *p);
+int		lenght_h(int sp, t_args *args, t_tabvar *var, t_params *p);
+int		lenght_l(int sp, t_args *args, t_tabvar *var, t_params *p);
+int		lenght_L(int sp, t_args *args, t_tabvar *var, t_params *p);
+int		lenght_j(int sp, t_args *args, t_tabvar *var, t_params *p);
+int		lenght_z(int sp, t_args *args, t_tabvar *var, t_params *p);
+int		lenght_hh(int sp, t_args *args, t_tabvar *var, t_params *p);
+int		lenght_ll(int sp, t_args *args, t_tabvar *var, t_params *p);
 
 					/*con*/
 void	printhex(size_t nb, char *base);
