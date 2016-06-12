@@ -6,7 +6,7 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:27:41 by sbeline           #+#    #+#             */
-/*   Updated: 2016/06/12 21:21:08 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/06/12 21:48:05 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ static void		init_parm(t_params *params)
 int			gest_flag(int pos, const char *str, t_params *params)
 {
 	int ret;
-	int cpy;
 
 	ret = pos;
 	ret += init_width(str, ret, params);
