@@ -6,7 +6,7 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/26 15:57:28 by sbeline           #+#    #+#             */
-/*   Updated: 2016/06/11 17:14:49 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/06/12 19:23:04 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,39 @@
 int		flags_print(t_params *params, int ref)
 {
 	int diff;
+	int cnt;
+	int cnt2;
 
+	cnt2 = 0;
+	cnt = 0;
 	diff = 0;
-	if (params->flags == 't')
+	if (params->tflags == 't')
 	{
-		diff = params->count_flags;
-		while (params->count_flags--)
+		cnt = params->count_tflags;
+		while (params->count_tflags-- && !params->neg)
 			ft_putchar(' ');
-		return (diff + ref);
 	}
-	diff = params->count_flags - ref;
+	if (!params->count_flags)
+		return(cnt + ref);
+	if (cnt > params->count_flags - ref)
+	{
+		cnt2 = cnt - params->count_flags - ref;
+		diff = cnt2;
+	}
+	else
+	{
+		cnt2 = params->count_flags - ref - cnt;
+		diff = cnt2;
+	}
 	while (diff--)
-		ft_putchar(params->flags);
-	return (params->count_flags);
+	{
+		if (params->neg)
+			ft_putchar(' ');
+		else
+			ft_putchar(params->flags);
+	}
+	return (cnt2 + cnt + ref);
+	return (1);
 }
 
 int		sharp_printhx(int nb, int maj, int tmp)

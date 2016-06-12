@@ -6,7 +6,7 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/26 15:38:35 by sbeline           #+#    #+#             */
-/*   Updated: 2016/06/11 17:32:13 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/06/12 19:43:16 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,18 @@ int			init_width(const char *str, int pos, t_params *params)
 		params->count_flags = 1;
 		return (1);
 	}
-	else if (str[pos] == '-' && !ft_isdigit(str[pos + 1]))
+	else if (str[pos] == '-' && str[pos + 1] == '0')
 	{
 		params->neg_nb = 1;
 		return (1);
 	}
-	else if (str[pos] == '+' && !ft_isdigit(str[pos + 1]))
+	else if (str[pos] == '+')
 	{
 		params->pos_nb = 1;
 		return (1);
 	}
-	if (str[pos] == '*')
-		return (0);
+	if (str[pos] == '.')
+		return (1);
 	return (0);
 }
 

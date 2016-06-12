@@ -6,7 +6,7 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:27:41 by sbeline           #+#    #+#             */
-/*   Updated: 2016/06/11 18:27:30 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/06/12 16:05:24 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,42 +19,45 @@ static void		init_parm(t_params *params)
 	params->lenght = 0;
 	params->specifier = 0;
 	params->count_flags = 0;
+	params->count_tflags = 0;
 	params->flags = 0;
 	params->neg = 0;
 	params->pos = 0;
 	params->neg_nb = 0;
 	params->pos_nb = 0;
-
+	params->tflags = 0;
 }
 
 int			gest_flag(int pos, const char *str, t_params *params)
 {
 	int ret;
+	int cpy;
 
 	ret = pos;
-	ft_putstr("ret_begin=");
+	/*ft_putstr("ret_begin=");
 	ft_putendl(str + ret);
 	ft_putstr("ret_before=");
 	ft_putnbr(ret);
-	ft_putchar('\n');
-	ret += init_width(str, pos, params);
-	ft_putstr("ret_width=");
+	ft_putchar('\n');*/
+	ret += init_width(str, ret, params);
+	/*ft_putstr("ret_width=");
 	ft_putnbr(ret);
 	ft_putchar('\n');
-	ret += flags(str, pos, params);
-	ft_putstr("ret_flags=");
+	ft_putendl(str + ret);*/
+	ret += flags(str, ret, params);
+	/*ft_putstr("ret_flags=");
 	ft_putnbr(ret);
-	ft_putchar('\n');
-	ret += space(str, pos, params);
-	ft_putstr("ret_space=");
+	ft_putchar('\n');*/
+	ret += space(str, ret, params);
+	/*ft_putstr("ret_space=");
 	ft_putnbr(ret);
 	ft_putchar('\n');
 	ft_putstr("ret=");
-	ft_putendl(str + ret);
+	ft_putendl(str + ret);*/
 	if (ret > pos)
-		gest_flag(ret, str, params);
-	ft_putstr("ret_last=");
-	ft_putendl(str + ret);
+		ret = gest_flag(ret, str, params);
+	/*ft_putstr("ret_last=");
+	ft_putendl(str + ret);*/
 	return (ret);
 }
 
