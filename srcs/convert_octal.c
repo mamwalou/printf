@@ -6,20 +6,20 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/27 17:40:49 by sbeline           #+#    #+#             */
-/*   Updated: 2016/05/30 16:22:37 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/06/12 19:57:32 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/my_printf.h"
 
-void 			printoctal(size_t nb, char *base)
+void			printoctal(size_t nb, char *base)
 {
 	if (nb >= 8)
 		printoctal(nb / 8, base);
 	ft_putchar(base[(int)(nb % 8)]);
 }
 
-int 			ctoctal(size_t nb, char *base)
+int				ctoctal(size_t nb, char *base)
 {
 	static int count;
 
@@ -27,13 +27,13 @@ int 			ctoctal(size_t nb, char *base)
 	if (nb >= 8)
 		ctoctal(nb / 8, base);
 	count++;
-	return(count);
+	return (count);
 }
 
-int			con_uloctal(unsigned long long nb, t_params *params)
+int				con_uloctal(unsigned long long nb, t_params *params)
 {
-	int ret;
-	int tmp;
+	int			ret;
+	int			tmp;
 
 	tmp = 0;
 	ret = 0;
@@ -57,8 +57,8 @@ int			con_uloctal(unsigned long long nb, t_params *params)
 
 int				con_loctal(long long nb, t_params *params)
 {
-	int ret;
-	int tmp;
+	int			ret;
+	int			tmp;
 
 	tmp = 0;
 	ret = 0;
@@ -82,8 +82,8 @@ int				con_loctal(long long nb, t_params *params)
 
 int				con_octal(unsigned int nb, t_params *params)
 {
-	int ret;
-	int tmp;
+	int			ret;
+	int			tmp;
 
 	tmp = 0;
 	ret = 0;

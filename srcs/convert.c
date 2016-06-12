@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   convert.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbeline <sbeline@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/13 16:19:35 by sbeline           #+#    #+#             */
-/*   Updated: 2016/05/13 17:28:47 by sbeline          ###   ########.fr       */
+/*   Created: 2016/06/12 19:53:53 by sbeline           #+#    #+#             */
+/*   Updated: 2016/06/12 19:53:55 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/my_printf.h"
 
-int			convert_uloctal(unsigned long long nb, int size_nb)
+int				convert_uloctal(unsigned long long nb, int size_nb)
 {
-	char	octal[size_nb];
-	int		tmp;
-	int		i;
-	int		count;
+	char		octal[size_nb];
+	int			tmp;
+	int			i;
+	int			count;
 
 	i = 1;
 	count = 0;
@@ -84,18 +84,15 @@ int				convert_octal(unsigned int nb, int size_nb)
 	return (count);
 }
 
-int			convert_unlhx(unsigned long long nb, int size_nb, int maj)
+int				convert_unlhx(unsigned long long nb, int size_nb, int maj)
 {
-	char	hex[size_nb];
-	int		tmp;
-	int		i;
+	char		hex[size_nb];
+	int			tmp;
+	int			i;
 
 	i = 0;
 	if (nb == 0)
-	{
-		ft_putchar('0');
-		return (1);
-	}
+		return (printnbr(nb, NULL));
 	while (nb != 0)
 	{
 		tmp = nb % 16;
@@ -115,18 +112,15 @@ int			convert_unlhx(unsigned long long nb, int size_nb, int maj)
 	return (i);
 }
 
-int			convert_hx(unsigned int nb, int size_nb, int maj)
+int				convert_hx(unsigned int nb, int size_nb, int maj)
 {
-	char	hex[size_nb];
-	int		tmp;
-	int		i;
+	char		hex[size_nb];
+	int			tmp;
+	int			i;
 
 	i = 0;
 	if (nb == 0)
-	{
-		ft_putchar('0');
-		return (1);
-	}
+		return (printnbr(nb, NULL));
 	while (nb != 0)
 	{
 		tmp = nb % 16;

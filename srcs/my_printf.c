@@ -6,7 +6,7 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:27:41 by sbeline           #+#    #+#             */
-/*   Updated: 2016/06/12 16:05:24 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/06/12 20:39:21 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,30 +34,11 @@ int			gest_flag(int pos, const char *str, t_params *params)
 	int cpy;
 
 	ret = pos;
-	/*ft_putstr("ret_begin=");
-	ft_putendl(str + ret);
-	ft_putstr("ret_before=");
-	ft_putnbr(ret);
-	ft_putchar('\n');*/
 	ret += init_width(str, ret, params);
-	/*ft_putstr("ret_width=");
-	ft_putnbr(ret);
-	ft_putchar('\n');
-	ft_putendl(str + ret);*/
 	ret += flags(str, ret, params);
-	/*ft_putstr("ret_flags=");
-	ft_putnbr(ret);
-	ft_putchar('\n');*/
 	ret += space(str, ret, params);
-	/*ft_putstr("ret_space=");
-	ft_putnbr(ret);
-	ft_putchar('\n');
-	ft_putstr("ret=");
-	ft_putendl(str + ret);*/
 	if (ret > pos)
 		ret = gest_flag(ret, str, params);
-	/*ft_putstr("ret_last=");
-	ft_putendl(str + ret);*/
 	return (ret);
 }
 
@@ -78,7 +59,7 @@ int			to_convert(const char *str, int *pos, t_params *params)
 			while ((get_precision(str, *pos, params)) > 0)
 			{
 				*pos += 1;
-				return (count_space +1);
+				return (count_space + 1);
 			}
 		}
 		params->lenght = lenght_gest(str + *pos);
@@ -93,12 +74,12 @@ int			to_convert(const char *str, int *pos, t_params *params)
 			return (-1);
 		return (1);
 	}
-	return(-1);
+	return (-1);
 }
 
-int 		print(const char *format, int *pos ,t_params *params)
+int			print(const char *format, int *pos, t_params *params)
 {
-	int ret;
+	int		ret;
 
 	ret = 0;
 	if (!format[*pos])
@@ -118,10 +99,9 @@ int 		print(const char *format, int *pos ,t_params *params)
 	ft_putchar(format[*pos]);
 	if (params->specifier == SPECIFIER && params->flags != 't' && params->neg)
 		while (ret--)
-		ft_putchar(' ');
+			ft_putchar(' ');
 	*pos += 1;
 	return (params->count_flags);
-
 }
 
 int			ft_printf(const char *format, ...)
@@ -134,7 +114,6 @@ int			ft_printf(const char *format, ...)
 	i = 0;
 	ret = 0;
 	va_start(args.ap, format);
-
 	while (format[i])
 	{
 		init_parm(&params);
@@ -144,5 +123,5 @@ int			ft_printf(const char *format, ...)
 			ret += print(format, &i, &params);
 	}
 	va_end(args.ap);
-	return(ret);
+	return (ret);
 }

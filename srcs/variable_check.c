@@ -6,28 +6,28 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:26:01 by sbeline           #+#    #+#             */
-/*   Updated: 2016/05/30 19:28:42 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/06/12 20:39:17 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/my_printf.h"
 
-int     specifier_s(t_params *params, t_args *args, t_tabvar *var)
+int			specifier_s(t_params *params, t_args *args, t_tabvar *var)
 {
-    if (params->lenght == LENGHT)
-    {
-        if ((var->var_str = va_arg(args->ap, char*)) != NULL)
+	if (params->lenght == LENGHT)
+	{
+		if ((var->var_str = va_arg(args->ap, char*)) != NULL)
 			return (ft_printstr(var->var_str, params));
 		else
 		{
 			ft_putstr("(null)");
 			return (6);
 		}
-    }
-    return(ft_strlen(var->var_str));
+	}
+	return (ft_strlen(var->var_str));
 }
 
-int     specifier_S(t_params *params, t_args *args, t_tabvar *var)
+int			specifier_ss(t_params *params, t_args *args, t_tabvar *var)
 {
 	if (params->lenght == LENGHT)
 	{
@@ -42,17 +42,17 @@ int     specifier_S(t_params *params, t_args *args, t_tabvar *var)
 	return (-1);
 }
 
-int     specifier_c(t_params *params, t_args *args, t_tabvar *var)
+int			specifier_c(t_params *params, t_args *args, t_tabvar *var)
 {
-    if (params->lenght == LENGHT)
-    {
-        var->var_c = va_arg(args->ap, int);
-        return (ft_printchar(var->var_c, params));
-    }
-    return (-1);
+	if (params->lenght == LENGHT)
+	{
+		var->var_c = va_arg(args->ap, int);
+		return (ft_printchar(var->var_c, params));
+	}
+	return (-1);
 }
 
-int specifier_C(t_params *params, t_args *args, t_tabvar *var)
+int			specifier_cc(t_params *params, t_args *args, t_tabvar *var)
 {
 	if (params->lenght == LENGHT)
 	{

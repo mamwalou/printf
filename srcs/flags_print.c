@@ -6,7 +6,7 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/26 15:57:28 by sbeline           #+#    #+#             */
-/*   Updated: 2016/06/12 19:23:04 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/06/12 19:58:59 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		flags_print(t_params *params, int ref)
 			ft_putchar(' ');
 	}
 	if (!params->count_flags)
-		return(cnt + ref);
+		return (cnt + ref);
 	if (cnt > params->count_flags - ref)
 	{
 		cnt2 = cnt - params->count_flags - ref;

@@ -6,7 +6,7 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:26:07 by sbeline           #+#    #+#             */
-/*   Updated: 2016/06/12 19:46:27 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/06/12 19:58:07 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int			specifier(char format)
 	tab[12] = 'X';
 	tab[13] = 'p';
 	i = 0;
-	while(i < SPECIFIER)
+	while (i < SPECIFIER)
 	{
 		if (format == tab[i])
 			return (i);
@@ -46,7 +46,6 @@ int			define_width(const char *str, int pos, t_params *params)
 	int ret;
 
 	ret = 0;
-
 	if (str[pos] == '-')
 	{
 		params->neg = 1;

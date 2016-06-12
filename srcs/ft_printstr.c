@@ -6,15 +6,15 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/27 19:10:59 by sbeline           #+#    #+#             */
-/*   Updated: 2016/06/12 15:59:31 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/06/12 20:01:12 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/my_printf.h"
 
-int		ft_printchar(char c, t_params *params)
+int				ft_printchar(char c, t_params *params)
 {
-	int ret;
+	int			ret;
 
 	ret = 1;
 	if (!params->count_flags || params->tflags == 't')
@@ -30,10 +30,9 @@ int		ft_printchar(char c, t_params *params)
 	return (ret);
 }
 
-
-int		ft_printwchar(wchar_t *wstr, t_params *params)
+int				ft_printwchar(wchar_t *wstr, t_params *params)
 {
-	int ret;
+	int			ret;
 
 	ret = 0;
 	if (params->count_flags == 0 || !wstr || params->tflags == 't')
@@ -49,12 +48,13 @@ int		ft_printwchar(wchar_t *wstr, t_params *params)
 	return (ret);
 }
 
-int		ft_printstr(char *str, t_params *params)
+int				ft_printstr(char *str, t_params *params)
 {
-	int ret;
+	int			ret;
 
 	ret = 0;
-	if ((int)ft_strlen(str) > params->count_flags || !*str || params->tflags == 't')
+	if ((int)ft_strlen(str) > params->count_flags || !*str
+		|| params->tflags == 't')
 	{
 		ft_putstr(str);
 		return (ft_strlen(str));

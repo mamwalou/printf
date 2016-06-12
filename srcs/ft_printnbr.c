@@ -6,7 +6,7 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/23 17:09:02 by sbeline           #+#    #+#             */
-/*   Updated: 2016/06/12 19:29:06 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/06/12 20:00:04 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ int		printnbr(int nb, t_params *params)
 		return (ft_nbsize(nb) + ret);
 	}
 	if (params->flags == '0' || params->flags == ' ' || params->tflags == 't')
-	{
 		return (space_print(params, nb) + ret);
-	}
 	return (0);
 }

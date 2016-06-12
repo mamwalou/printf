@@ -6,7 +6,7 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:20:50 by sbeline           #+#    #+#             */
-/*   Updated: 2016/06/11 17:14:50 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/06/12 20:33:29 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int			ft_print_memory(t_params *params, void *addr)
 {
-	size_t ptr_to_print;
-	int ret;
-	int tmp;
+	size_t	ptr_to_print;
+	int		ret;
+	int		tmp;
 
 	tmp = 2;
 	ptr_to_print = (size_t)addr;

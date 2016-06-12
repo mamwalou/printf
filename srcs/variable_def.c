@@ -6,31 +6,31 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:27:57 by sbeline           #+#    #+#             */
-/*   Updated: 2016/05/27 17:59:17 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/06/12 20:47:32 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/my_printf.h"
 
-static t_tab    tab[SPECIFIER]=
+static t_tab		tab[SPECIFIER] =
 {
-    {0, specifier_s},
-    {1, specifier_S},
-    {2, specifier_c},
-    {3, specifier_C},
-    {4, specifier_integer},
-    {5, specifier_integer},
-    {6, specifier_integer},
-    {7, specifier_spint},
-    {8, specifier_integer},
-    {9, specifier_spint},
-    {10, specifier_slong},
+	{0, specifier_s},
+	{1, specifier_ss},
+	{2, specifier_c},
+	{3, specifier_cc},
+	{4, specifier_integer},
+	{5, specifier_integer},
+	{6, specifier_integer},
+	{7, specifier_spint},
+	{8, specifier_integer},
+	{9, specifier_spint},
+	{10, specifier_slong},
 	{11, specifier_spint},
 	{12, specifier_spint},
 	{13, print_add},
 };
 
-static t_lght		lght[LENGHT]=
+static t_lght		lght[LENGHT] =
 {
 	{0, lenght_h},
 	{1, lenght_l},
@@ -40,7 +40,7 @@ static t_lght		lght[LENGHT]=
 	{5, lenght_ll},
 };
 
-static void 	init_var(t_tabvar *var)
+static void			init_var(t_tabvar *var)
 {
 	var->var_unchar = 0;
 	var->var_unshort = 0;
@@ -57,12 +57,12 @@ static void 	init_var(t_tabvar *var)
 	var->var_double = 0;
 }
 
-int        my_printf(t_params *params, t_args *args)
+int					my_printf(t_params *params, t_args *args)
 {
-    int     i;
-	int		j;
-	int		count;
-	t_tabvar	var;
+	t_tabvar		var;
+	int				i;
+	int				j;
+	int				count;
 
 	i = 0;
 	j = 0;
@@ -73,9 +73,9 @@ int        my_printf(t_params *params, t_args *args)
 	if (i > SPECIFIER)
 		return (-1);
 	if (params->lenght == LENGHT)
-    	if (i < SPECIFIER)
+		if (i < SPECIFIER)
 			return (count + tab[i].f(params, args, &var));
 	while (lght[j].j != params->lenght)
 		j++;
-	return(count + lght[j].f(i, args, &var, params));
+	return (count + lght[j].f(i, args, &var, params));
 }

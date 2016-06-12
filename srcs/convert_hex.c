@@ -6,20 +6,20 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/27 17:41:09 by sbeline           #+#    #+#             */
-/*   Updated: 2016/05/29 15:43:00 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/06/12 19:56:14 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/my_printf.h"
 
-void 			printhex(size_t nb, char *base)
+void			printhex(size_t nb, char *base)
 {
 	if (nb >= 16)
 		printhex(nb / 16, base);
 	ft_putchar(base[(int)(nb % 16)]);
 }
 
-int 			cthex(size_t nb, char *base)
+int				cthex(size_t nb, char *base)
 {
 	static int count;
 
@@ -27,13 +27,13 @@ int 			cthex(size_t nb, char *base)
 	if (nb >= 16)
 		cthex(nb / 16, base);
 	count++;
-	return(count);
+	return (count);
 }
 
-int			con_unlhx(unsigned long long nb, int maj, t_params *p)
+int				con_unlhx(unsigned long long nb, int maj, t_params *p)
 {
-	int ret;
-	int tmp;
+	int			ret;
+	int			tmp;
 
 	tmp = 0;
 	ret = 0;
@@ -55,8 +55,8 @@ int			con_unlhx(unsigned long long nb, int maj, t_params *p)
 
 int				con_hx(unsigned int nb, int maj, t_params *params)
 {
-	int ret;
-	int tmp;
+	int			ret;
+	int			tmp;
 
 	tmp = 0;
 	ret = 0;
