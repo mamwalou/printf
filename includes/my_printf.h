@@ -88,6 +88,7 @@ int		get_precision(const char *str, int pos, t_params *params);
 int 	lenght_gest(const char *str);
 int		specifier(char format);
 int		space(const char *str, int pos, t_params *params);
+int		zero_size(const char *str, int pos, t_params *params);
 
 
 					/*DEFINE VARIABLE USE*/
