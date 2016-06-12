@@ -6,7 +6,7 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:26:07 by sbeline           #+#    #+#             */
-/*   Updated: 2016/06/12 19:58:07 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/06/12 21:10:34 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,25 +89,12 @@ int			flags(const char *str, int pos, t_params *params)
 	return (0);
 }
 
-int			space(const char *str, int pos, t_params *params)
+int			zero_size(const char *str, int pos, t_params *params)
 {
 	int tmp;
 	int count;
 
-	if (str[pos] == ' ')
-	{
-		if (str[pos] == ' ')
-			params->tflags = 't';
-		tmp = 0;
-		while (str[pos] == ' ')
-		{
-			pos++;
-			tmp++;
-			params->count_tflags++;
-		}
-		return (tmp);
-	}
-	else if (str[pos] == '0')
+	if (str[pos] == '0')
 	{
 		if (str[pos] == '0')
 			params->flags = '0';
@@ -122,6 +109,26 @@ int			space(const char *str, int pos, t_params *params)
 			count = 10;
 			tmp++;
 			pos++;
+		}
+		return (tmp);
+	}
+	return (0);
+}
+
+int			space(const char *str, int pos, t_params *params)
+{
+	int tmp;
+
+	if (str[pos] == ' ')
+	{
+		if (str[pos] == ' ')
+			params->tflags = 't';
+		tmp = 0;
+		while (str[pos] == ' ')
+		{
+			pos++;
+			tmp++;
+			params->count_tflags++;
 		}
 		return (tmp);
 	}

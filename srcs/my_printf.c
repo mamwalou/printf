@@ -6,7 +6,7 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 16:27:41 by sbeline           #+#    #+#             */
-/*   Updated: 2016/06/12 20:39:21 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/06/12 21:21:08 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int			gest_flag(int pos, const char *str, t_params *params)
 	ret = pos;
 	ret += init_width(str, ret, params);
 	ret += flags(str, ret, params);
+	ret += zero_size(str, pos, params);
 	ret += space(str, ret, params);
 	if (ret > pos)
 		ret = gest_flag(ret, str, params);
@@ -53,15 +54,6 @@ int			to_convert(const char *str, int *pos, t_params *params)
 	while (str[*pos])
 	{
 		*pos = gest_flag(*pos, str, params);
-		if (str[*pos] == '.')
-		{
-			*pos += 1;
-			while ((get_precision(str, *pos, params)) > 0)
-			{
-				*pos += 1;
-				return (count_space + 1);
-			}
-		}
 		params->lenght = lenght_gest(str + *pos);
 		if (params->lenght < 4)
 			*pos += 1;

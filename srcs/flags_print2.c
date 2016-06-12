@@ -6,7 +6,7 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/29 15:44:22 by sbeline           #+#    #+#             */
-/*   Updated: 2016/06/12 19:59:35 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/06/12 21:06:04 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,34 @@ int		space_print(t_params *params, int nb)
 		ret = flags_print(params, ft_nbsize(nb) + params->pos_nb);
 	if (ret == 0 && nb != 0)
 		return (ft_nbsize(nb));
+	return (ret);
+}
+
+int		space_printoc(t_params *params, int tmp, int nb)
+{
+	int ret;
+
+	ret = 0;
+	if (!params->neg)
+		ret = flags_print(params, tmp);
+	printoctal(nb, "012345678");
+	if (params->neg)
+		ret = flags_print(params, tmp);
+	return (0);
+}
+
+int		space_printhx(t_params *params, int tmp, int nb, int maj)
+{
+	int ret;
+
+	ret = 0;
+	if (!params->neg)
+		ret = flags_print(params, tmp);
+	if (!maj)
+		printhex(nb, "0123456789abcdef");
+	else
+		printhex(nb, "0123456789ABCDEF");
+	if (params->neg)
+		ret = flags_print(params, tmp);
 	return (ret);
 }
