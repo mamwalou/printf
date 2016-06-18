@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/13 16:27:57 by sbeline           #+#    #+#             */
-/*   Updated: 2016/06/12 21:06:03 by sbeline          ###   ########.fr       */
+/*   Created: 2016/06/18 16:02:01 by sbeline           #+#    #+#             */
+/*   Updated: 2016/06/18 16:24:57 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/my_printf.h"
 
-static t_tab		tab[SPECIFIER] =
+static const t_tab		g_tab[SPECIFIER] =
 {
 	{0, specifier_s},
 	{1, specifier_ss},
@@ -30,7 +30,7 @@ static t_tab		tab[SPECIFIER] =
 	{13, print_add},
 };
 
-static t_lght		lght[LENGHT] =
+static t_lght		g_lght[LENGHT] =
 {
 	{0, lenght_h},
 	{1, lenght_l},
@@ -68,14 +68,14 @@ int					my_printf(t_params *params, t_args *args)
 	j = 0;
 	count = 0;
 	init_var(&var);
-	while (tab[i].i != params->specifier && i <= SPECIFIER)
+	while (g_tab[i].i != params->specifier && i <= SPECIFIER)
 		i++;
 	if (i > SPECIFIER)
 		return (-1);
 	if (params->lenght == LENGHT)
 		if (i < SPECIFIER)
-			return (count + tab[i].f(params, args, &var));
-	while (lght[j].j != params->lenght)
+			return (count + g_tab[i].f(params, args, &var));
+	while (g_lght[j].j != params->lenght)
 		j++;
-	return (count + lght[j].f(i, args, &var, params));
+	return (count + g_lght[j].f(i, args, &var, params));
 }

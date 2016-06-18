@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
+/*   By: sbeline <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/13 16:27:41 by sbeline           #+#    #+#             */
-/*   Updated: 2016/06/12 21:48:05 by sbeline          ###   ########.fr       */
+/*   Created: 2016/06/18 16:14:29 by sbeline           #+#    #+#             */
+/*   Updated: 2016/06/18 16:14:32 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ static void		init_parm(t_params *params)
 	params->tflags = 0;
 }
 
-int			gest_flag(int pos, const char *str, t_params *params)
+int				gest_flag(int pos, const char *str, t_params *params)
 {
-	int ret;
+	int			ret;
 
 	ret = pos;
 	ret += init_width(str, ret, params);
@@ -42,9 +42,9 @@ int			gest_flag(int pos, const char *str, t_params *params)
 	return (ret);
 }
 
-int			to_convert(const char *str, int *pos, t_params *params)
+int				to_convert(const char *str, int *pos, t_params *params)
 {
-	int count_space;
+	int			count_space;
 
 	count_space = 0;
 	if (str[*pos] != '%' && str[*pos])
@@ -68,9 +68,9 @@ int			to_convert(const char *str, int *pos, t_params *params)
 	return (-1);
 }
 
-int			print(const char *format, int *pos, t_params *params)
+int				print(const char *format, int *pos, t_params *params)
 {
-	int		ret;
+	int			ret;
 
 	ret = 0;
 	if (!format[*pos])
@@ -95,7 +95,7 @@ int			print(const char *format, int *pos, t_params *params)
 	return (params->count_flags);
 }
 
-int			ft_printf(const char *format, ...)
+int				ft_printf(const char *format, ...)
 {
 	int			i;
 	int			ret;
