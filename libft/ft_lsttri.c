@@ -6,7 +6,7 @@
 /*   By: sbeline <sbeline@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/04 14:12:26 by sbeline           #+#    #+#             */
-/*   Updated: 2015/10/21 15:59:53 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/06/20 18:38:57 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ static void		merge(t_llist **l, t_llist *nvl_elm)
 		p->next = nvl_elm;
 	}
 }
+
 static void		trifusion(t_llist *alst)
 {
 	t_llist		*ptr;
@@ -70,11 +71,12 @@ static void		trifusion(t_llist *alst)
 			merge(&l2, tmp);
 		ptr = ptr->next;
 	}
-		read_list(l1);
-		ft_putstr("<--->");
-		read_list(l2);
+	read_list(l1);
+	ft_putstr("<--->");
+	read_list(l2);
 }
-void		ft_lsttri(t_llist **alst, int opt)
+
+void			ft_lsttri(t_llist **alst, int opt)
 {
 	if (opt == 1)
 	{

@@ -6,13 +6,13 @@
 /*   By: sbeline <sbeline@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 17:07:37 by sbeline           #+#    #+#             */
-/*   Updated: 2016/05/13 17:07:38 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/06/20 18:35:42 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Includes/libft.h"
 
-void 	ft_putwstr(wchar_t *s)
+void		ft_putwstr(wchar_t *s)
 {
 	while (*s)
 		ft_putwchar_fd(*s++, 1);

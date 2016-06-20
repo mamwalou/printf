@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/18 16:02:01 by sbeline           #+#    #+#             */
-/*   Updated: 2016/06/18 16:24:57 by sbeline          ###   ########.fr       */
+/*   Created: 2016/06/20 17:49:31 by sbeline           #+#    #+#             */
+/*   Updated: 2016/06/20 17:54:28 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ static void			init_var(t_tabvar *var)
 	var->var_wint = 0;
 	var->var_short = 0;
 	var->var_c = 0;
-	var->var_signedc = 0;
 	var->var_str = 0;
 	var->var_int = 0;
 	var->var_longlong = 0;

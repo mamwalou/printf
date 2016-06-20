@@ -6,16 +6,16 @@
 /*   By: sbeline <sbeline@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 17:08:27 by sbeline           #+#    #+#             */
-/*   Updated: 2016/05/13 17:08:28 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/06/20 18:13:29 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Includes/libft.h"
 
-char		*ft_strnjoin(char *s1, char *s2, int b,int e)
+char		*ft_strnjoin(char *s1, char *s2, int b, int e)
 {
-	char *ret;
-	int i;
+	char	*ret;
+	int		i;
 
 	i = 1;
 	if (!(ret = (char*)malloc(sizeof(char) * (ft_strlen(s1) + (e - b)))))
