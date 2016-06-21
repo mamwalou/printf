@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flags_print.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbeline <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/18 15:55:38 by sbeline           #+#    #+#             */
-/*   Updated: 2016/06/18 15:55:58 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/06/21 17:05:26 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ int				flags_print(t_params *params, int ref)
 	return (flags_print1(params, ref, cnt));
 }
 
-int				sharp_printhx(int nb, int maj, int tmp)
+int				sharp_printhx(int nb, int maj, int tmp, t_params *p)
 {
-	if (nb > 0)
+	if (tmp > p->count_flags)
 	{
 		if (!maj)
 		{
@@ -71,17 +71,22 @@ int				sharp_printhx(int nb, int maj, int tmp)
 		}
 		return (tmp + 2);
 	}
-	ft_putchar('0');
+	if (p->flags == '0' || p->flags == ' ')
+		return (space_printhx(p, tmp + 2, nb, maj));
 	return (1);
 }
 
-int				sharp_printoc(int nb, int tmp)
+int				sharp_printoc(int nb, int tmp, t_params *params)
 {
-	ft_putchar('0');
-	if (nb > 0)
+
+	if (tmp > params->count_flags)
 	{
+		if (nb > 0)
+			ft_putnbr(0);
 		printoctal(nb, "012345678");
-		return (tmp + 1);
+		return (tmp);
 	}
-	return (1);
+	if (params->flags == '0' || params->flags == ' ')
+		return (space_printoc(params, tmp, nb));
+	return (tmp);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbeline <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/18 16:14:29 by sbeline           #+#    #+#             */
-/*   Updated: 2016/06/18 16:14:32 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/06/21 16:29:58 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static void		init_parm(t_params *params)
 	params->neg_nb = 0;
 	params->pos_nb = 0;
 	params->tflags = 0;
+	params->sharp = 0;
 }
 
 int				gest_flag(int pos, const char *str, t_params *params)

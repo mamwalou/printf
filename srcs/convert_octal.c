@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   convert_octal.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbeline <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/12 21:41:01 by sbeline           #+#    #+#             */
-/*   Updated: 2016/06/12 21:41:22 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/06/21 16:58:19 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ int				con_uloctal(unsigned long long nb, t_params *params)
 	tmp = 0;
 	ret = 0;
 	tmp += ctoctal(nb, "012345678");
-	if (params->flags == '#')
-		return (sharp_printoc(nb, tmp));
+	if (params->sharp)
+		return (sharp_printoc(nb, tmp + 1, params));
 	if (nb == 0)
 	{
 		ft_putnbr(0);
@@ -63,8 +63,8 @@ int				con_loctal(long long nb, t_params *params)
 	tmp = 0;
 	ret = 0;
 	tmp += ctoctal(nb, "012345678");
-	if (params->flags == '#')
-		return (sharp_printoc(nb, tmp));
+	if (params->sharp)
+		return (sharp_printoc(nb, tmp + 1, params));
 	if (nb == 0)
 	{
 		ft_putnbr(0);
@@ -88,8 +88,8 @@ int				con_octal(unsigned int nb, t_params *params)
 	tmp = 0;
 	ret = 0;
 	tmp += ctoctal(nb, "012345678");
-	if (params->flags == '#')
-		return (sharp_printoc(nb, tmp));
+	if (params->sharp)
+		return (sharp_printoc(nb, tmp + 1, params));
 	if (nb == 0)
 	{
 		ft_putnbr(0);

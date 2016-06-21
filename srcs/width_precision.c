@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   width_precision.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbeline <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/18 16:01:47 by sbeline           #+#    #+#             */
-/*   Updated: 2016/06/18 16:01:49 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/06/21 16:29:55 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ int			init_width(const char *str, int pos, t_params *params)
 	(void)params;
 	if (str[pos] == '#')
 	{
-		params->flags = '#';
-		params->count_flags = 1;
+		params->sharp = 1;
 		return (1);
 	}
 	else if (str[pos] == '-' && str[pos + 1] == '0')

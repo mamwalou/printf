@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flags_print2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbeline <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/18 15:56:17 by sbeline           #+#    #+#             */
-/*   Updated: 2016/06/18 15:56:21 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/06/21 17:01:57 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ int		space_printoc(t_params *params, int tmp, int nb)
 	ret = 0;
 	if (!params->neg)
 		ret = flags_print(params, tmp);
+	if (params->sharp)
+		ft_putstr("0");
 	printoctal(nb, "012345678");
 	if (params->neg)
 		ret = flags_print(params, tmp);
@@ -61,6 +63,8 @@ int		space_printhx(t_params *params, int tmp, int nb, int maj)
 	ret = 0;
 	if (!params->neg)
 		ret = flags_print(params, tmp);
+	if (params->sharp)
+		ft_putstr("0x");
 	if (!maj)
 		printhex(nb, "0123456789abcdef");
 	else

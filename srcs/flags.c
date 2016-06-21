@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flags.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbeline <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/18 15:57:39 by sbeline           #+#    #+#             */
-/*   Updated: 2016/06/18 15:57:42 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/06/21 16:29:53 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,11 @@ int			define_width(const char *str, int pos, t_params *params)
 	else if (str[pos] == '+')
 	{
 		params->pos = 1;
+		ret++;
+	}
+	else if (str[pos] == '#')
+	{
+		params->sharp = 1;
 		ret++;
 	}
 	else if (!params->flags)

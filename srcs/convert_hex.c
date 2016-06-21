@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   convert_hex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbeline <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/12 21:40:04 by sbeline           #+#    #+#             */
-/*   Updated: 2016/06/12 21:40:11 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/06/21 16:05:33 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ int				con_unlhx(unsigned long long nb, int maj, t_params *p)
 	tmp = 0;
 	ret = 0;
 	tmp += cthex(nb, "0123456789abcdef");
-	if (p->flags == '#')
-		return (sharp_printhx(nb, maj, tmp));
+	if (p->sharp)
+		return (sharp_printhx(nb, maj, tmp, p));
 	if (tmp > p->count_flags)
 	{
 		if (!maj)
@@ -61,8 +61,8 @@ int				con_hx(unsigned int nb, int maj, t_params *params)
 	tmp = 0;
 	ret = 0;
 	tmp += cthex(nb, "0123456789abcdef");
-	if (params->flags == '#')
-		return (sharp_printhx(nb, maj, tmp));
+	if (params->sharp)
+		return (sharp_printhx(nb, maj, tmp, params));
 	if (tmp > params->count_flags)
 	{
 		if (!maj)
