@@ -6,7 +6,7 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/18 15:57:39 by sbeline           #+#    #+#             */
-/*   Updated: 2016/06/21 16:29:53 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/06/23 19:09:56 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,27 +43,24 @@ int			specifier(char format)
 
 int			define_width(const char *str, int pos, t_params *params)
 {
-	int ret;
-
-	ret = 0;
 	if (str[pos] == '-')
 	{
 		params->neg = 1;
-		ret++;
+		return (1);
 	}
 	else if (str[pos] == '+')
 	{
 		params->pos = 1;
-		ret++;
+		return (1);
 	}
 	else if (str[pos] == '#')
 	{
 		params->sharp = 1;
-		ret++;
+		return (1);
 	}
 	else if (!params->flags)
 		params->flags = ' ';
-	return (ret);
+	return (0);
 }
 
 int			flags(const char *str, int pos, t_params *params)

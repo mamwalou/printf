@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbeline <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 18:48:53 by sbeline           #+#    #+#             */
-/*   Updated: 2016/06/20 18:48:55 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/06/23 16:19:15 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct		s_params
 	int				pos_nb;
 	int				neg_nb;
 	int				tflags;
+	int				sharp;
 }					t_params;
 
 typedef struct		s_tabvar
@@ -93,8 +94,8 @@ int					print_integers_lenght(int lght, t_args *args,
 											t_tabvar *var);
 int					flags_print(t_params *params, int ref);
 int					space_print(t_params *params, int nb);
-int					sharp_printhx(int nb, int maj, int tmp);
-int					sharp_printoc(int nb, int tmp);
+int					sharp_printhx(int nb, int maj, int tmp, t_params *p);
+int					sharp_printoc(int nb, int tmp, t_params *p);
 int					space_printoc(t_params *params, int tmp, int nb);
 int					space_printhx(t_params *params, int tmp, int nb, int maj);
 

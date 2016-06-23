@@ -6,7 +6,7 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/18 15:56:17 by sbeline           #+#    #+#             */
-/*   Updated: 2016/06/21 17:01:57 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/06/23 18:50:59 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,11 @@ int		space_printhx(t_params *params, int tmp, int nb, int maj)
 	int ret;
 
 	ret = 0;
+	if (params->sharp && params->flags == '0')
+		ft_putstr("0x");
 	if (!params->neg)
 		ret = flags_print(params, tmp);
-	if (params->sharp)
+	if (params->sharp && params->flags == ' ' && !params->neg)
 		ft_putstr("0x");
 	if (!maj)
 		printhex(nb, "0123456789abcdef");

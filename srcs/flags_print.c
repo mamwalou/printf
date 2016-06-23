@@ -6,7 +6,7 @@
 /*   By: sbeline  <sbeline @student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/18 15:55:38 by sbeline           #+#    #+#             */
-/*   Updated: 2016/06/21 17:05:26 by sbeline          ###   ########.fr       */
+/*   Updated: 2016/06/23 17:24:50 by sbeline          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,34 +55,71 @@ int				flags_print(t_params *params, int ref)
 	return (flags_print1(params, ref, cnt));
 }
 
+static int				sharp_printhx1(int nb, int maj, int tmp, t_params *p)
+{
+	if (!maj)
+	{
+		if (p->flags == '0' || p->flags == ' ')
+			return (space_printhx(p, tmp + 2, nb, maj));
+		else
+		{
+			ft_putstr("0x");
+			printhex(nb, "0123456789abcdef");
+			return (tmp + 2);
+		}
+	}
+	else
+	{
+		if (p->flags == '0' || p->flags == ' ')
+			return (space_printhx(p, tmp + 2, nb, maj));
+		else
+		{
+			ft_putstr("0X");
+			printhex(nb, "0123456789ABCDEF");
+			return (tmp + 2);
+		}
+	}
+	return (tmp + 2);
+}
+
 int				sharp_printhx(int nb, int maj, int tmp, t_params *p)
 {
-	if (tmp > p->count_flags)
+	if (nb == 0)
+	{
+		ft_putnbr(0);
+		return (1);
+	}
+	if (tmp < p->count_flags)
+		return (sharp_printhx1(nb, maj, tmp, p));
+	else
 	{
 		if (!maj)
 		{
 			ft_putstr("0x");
 			printhex(nb, "0123456789abcdef");
+			return (tmp + 2);
 		}
 		else
 		{
 			ft_putstr("0X");
 			printhex(nb, "0123456789ABCDEF");
+			return(tmp + 2);
 		}
-		return (tmp + 2);
+
 	}
-	if (p->flags == '0' || p->flags == ' ')
-		return (space_printhx(p, tmp + 2, nb, maj));
 	return (1);
 }
 
 int				sharp_printoc(int nb, int tmp, t_params *params)
 {
-
 	if (tmp > params->count_flags)
 	{
-		if (nb > 0)
+		if (nb == 0)
+		{
 			ft_putnbr(0);
+			return (1);
+		}
+		ft_putnbr(0);
 		printoctal(nb, "012345678");
 		return (tmp);
 	}
